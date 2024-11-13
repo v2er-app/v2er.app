@@ -1,0 +1,93 @@
+---
+const navItems = [
+  { href: '#features', text: '功能特性' },
+  { href: '#faq', text: '常见问题' },
+  { href: '#reviews', text: '用户评价' },
+  { href: 'https://github.com/v2er-app', text: 'GitHub' },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-black/50 border-b border-white/10">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo Section -->
+      <div class="flex items-center gap-4">
+        <img 
+          src="/favicon.svg" 
+          alt="V2er Logo" 
+          class="h-12 w-12 group-hover:scale-110 transition-transform"
+        >
+        <div class="flex flex-col">
+          <span class="font-bold text-2xl text-white">
+            V2er
+          </span>
+          <span class="text-sm text-gray-400">
+            优雅的 V2EX 客户端
+          </span>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8">
+        {navItems.map(item => (
+          <a
+            href={item.href}
+            class="text-gray-300 hover:text-white transition-colors text-sm"
+            target={item.href.startsWith('#') ? '_self' : '_blank'}
+          >
+            {item.text}
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden p-2 text-gray-300 hover:text-white" id="mobile-menu-button">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="px-4 py-4 space-y-4 bg-black/90 border-t border-white/10">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class="block text-gray-300 hover:text-white transition-colors"
+          target={item.href.startsWith('#') ? '_self' : '_blank'}
+        >
+          {item.text}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // 点击导航链接后关闭菜单
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+
+  // 平滑滚动
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const href = this.getAttribute('href');
+      if (href) {
+        document.querySelector(href)?.scrollIntoView({
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+</script> 

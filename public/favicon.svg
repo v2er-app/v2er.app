@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="113px" height="151px" viewBox="0 0 113 151" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>logo_svg</title>
+<svg width="180px" height="180px" viewBox="0 0 180 180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>favicon</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="logo_svg" transform="translate(0, 0.6667)" fill="#000000" fill-rule="nonzero">
-            <polygon id="logo" points="56.78558 74.7592783 1.0993485 150 56.602355 150 112.5 74.7592783 55.207028 0 0 0"></polygon>
+        <!-- iOS style background with rounded corners -->
+        <rect id="background" fill="#FFFFFF" x="0" y="0" width="180" height="180" rx="40"></rect>
+        <!-- Original logo, scaled and centered with uniform padding -->
+        <g id="logo_svg" transform="translate(46, 46)" fill="#000000" fill-rule="nonzero">
+            <polygon id="logo" points="44.428464 44.8074226 0.87947880 88 44.281884 88 88 44.8074226 43.165622 0 0 0"></polygon>
         </g>
     </g>
 </svg>

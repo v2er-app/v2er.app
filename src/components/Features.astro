@@ -15,21 +15,21 @@ const features = [
   {
     icon: 'fa-cubes',
     title: '功能丰富',
-    description: '支持所有社区功能，额外提供手势操作、快捷分享等增强特性。'
+    description: '支持节点导航、帖子浏览、评论互动、消息通知、主题切换等全面功能。'
   },
   {
-    icon: 'fa-arrows-rotate',
-    title: '持续更新',
-    description: '开源项目持续维护，及时跟进平台新特性，不断提升使用体验。'
+    icon: 'fa-code-fork',
+    title: '开源免费',
+    description: '代码完全开源，无广告无内购，持续维护更新，欢迎社区贡献。'
   }
 ];
 ---
 
 <section class="features" id="features">
   <div class="container">
-    <h2 class="section-title">为什么选择 V2er？</h2>
+    <h2 class="section-title">功能特性</h2>
     <p class="section-desc">
-      原生应用体验，优雅的设计，强大的功能，这款专为 V2EX 社区打造的客户端，值得你现在就开始使用。
+      专为 V2EX 社区打造的原生客户端，提供流畅的浏览体验和丰富的功能特性。
     </p>
 
     <div class="feature-grid">
@@ -42,6 +42,17 @@ const features = [
           <p>{feature.description}</p>
         </div>
       ))}
+    </div>
+
+    <div class="github-link">
+      <a 
+        href="https://github.com/v2er-app" 
+        target="_blank"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all"
+      >
+        <i class="fab fa-github"></i>
+        在 GitHub 上查看源码
+      </a>
     </div>
   </div>
 </section> 

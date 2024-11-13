@@ -3,12 +3,13 @@
 }
 
 .feature-grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto mb-12;
 }
 
 .feature-card {
   @apply p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] 
-         hover:bg-white/[0.04] transition-all hover:-translate-y-1;
+         hover:bg-white/[0.04] transition-all hover:-translate-y-1
+         flex flex-col;
 }
 
 .feature-icon {
@@ -25,5 +26,27 @@
 }
 
 .feature-card p {
-  @apply text-gray-400;
+  @apply text-gray-400 leading-relaxed;
+}
+
+.github-link {
+  @apply text-center mt-12;
+}
+
+.github-link a {
+  @apply text-gray-300 hover:text-white;
+}
+
+@media (max-width: 768px) {
+  .feature-grid {
+    @apply grid-cols-1 gap-6;
+  }
+  
+  .feature-card {
+    @apply text-center;
+  }
+
+  .feature-icon {
+    @apply mx-auto;
+  }
 } 

@@ -21,4 +21,9 @@
 
 .section-desc {
   @apply text-gray-400 text-center mb-12 max-w-2xl mx-auto;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
 } 
