@@ -12,6 +12,7 @@
          border border-zinc-800
          hover:bg-zinc-900 hover:border-zinc-700
          transform hover:-translate-y-1;
+         transition: all 0.3s ease;
 }
 
 .quote-mark {
