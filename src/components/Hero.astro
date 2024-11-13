@@ -2,34 +2,75 @@
 import '../styles/hero.css';
 ---
 
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="text-section">
-        <h1>简约优雅</h1>
-        <p class="text-2xl text-gray-400 mt-4 mb-8">
-          为极致体验而生<br>
-          纯粹、克制、好用的 V2EX 客户端
+<section class="relative min-h-screen flex items-center justify-center py-20 md:py-32">
+  <!-- 背景渐变 -->
+  <div class="absolute inset-0 bg-gradient-to-b from-purple-500/10 via-transparent to-transparent"></div>
+
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16">
+      <!-- 左侧文本内容 -->
+      <div class="flex-1 text-center md:text-left">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+            更好的 V2EX
+          </span>
+          <br />
+          <span class="text-white">浏览体验</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
+          简洁的设计，丰富的功能，流畅的交互体验。让您随时随地享受 V2EX 的乐趣。
         </p>
-        <div class="download-buttons">
-          <a href="https://play.google.com/store/apps/details?id=me.ghui.v2er" 
-             class="store-button" 
-             target="_blank">
-            <i class="fab fa-google-play"></i>
-            Google Play Store
+
+        <div class="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
+          <a 
+            href="#" 
+            class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 
+                   rounded-xl font-semibold text-white shadow-lg 
+                   hover:shadow-purple-500/25 transition-all duration-300
+                   hover:-translate-y-0.5 transform"
+          >
+            <i class="fab fa-apple mr-2"></i>
+            App Store
           </a>
-          <a href="https://apps.apple.com/app/id1596137027" 
-             class="store-button" 
-             target="_blank">
-            <i class="fab fa-apple"></i>
-            Apple App Store
+          
+          <a 
+            href="#" 
+            class="w-full sm:w-auto px-8 py-4 bg-white/10 rounded-xl font-semibold text-white 
+                   backdrop-blur-lg hover:bg-white/15 transition-all duration-300
+                   hover:-translate-y-0.5 transform"
+          >
+            <i class="fab fa-google-play mr-2"></i>
+            Play Store
           </a>
         </div>
       </div>
-      <div class="preview-section">
-        <img src="/image/android-screenshot.png" alt="V2er Android 预览" class="phone android" />
-        <img src="/image/ios-screenshot.png" alt="V2er iOS 预览" class="phone ios" />
+
+      <!-- 右侧设备预览 -->
+      <div class="flex-1 relative">
+        <div class="relative w-full max-w-[320px] mx-auto md:max-w-none">
+          <!-- iOS 设备 -->
+          <img 
+            src="/image/ios-screenshot.png" 
+            alt="iOS App Screenshot" 
+            class="w-[280px] md:w-[320px] rounded-[32px] shadow-2xl
+                   relative z-20 mx-auto md:ml-auto"
+          >
+          
+          <!-- Android 设备 -->
+          <img 
+            src="/image/android-screenshot.png" 
+            alt="Android App Screenshot" 
+            class="w-[280px] md:w-[320px] rounded-[32px] shadow-2xl
+                   absolute top-1/2 left-1/2 md:left-0 
+                   transform -translate-x-1/2 -translate-y-1/2 md:translate-x-0
+                   -rotate-6 z-10 opacity-75 blur-[1px]"
+          >
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- 装饰元素 -->
+  <div class="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black to-transparent"></div>
 </section> 
