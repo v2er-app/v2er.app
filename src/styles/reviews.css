@@ -7,8 +7,9 @@
 }
 
 .review-card {
-  @apply p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05] 
-         hover:bg-white/[0.04] transition-all relative;
+  @apply p-8 rounded-2xl bg-white/[0.02] 
+         hover:bg-white/[0.04] transition-all relative
+         border border-zinc-800;
 }
 
 .quote-mark {
