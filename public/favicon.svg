@@ -3,7 +3,7 @@
     <title>favicon</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <!-- iOS style background with rounded corners -->
-        <rect id="background" fill="#FFFFFF" x="0" y="0" width="180" height="180" rx="40"></rect>
+        <rect id="background" fill="#F5F5F5" x="0" y="0" width="180" height="180" rx="40"></rect>
         <!-- Original logo, scaled and centered with uniform padding -->
         <g id="logo_svg" transform="translate(46, 46)" fill="#000000" fill-rule="nonzero">
             <polygon id="logo" points="44 40 0 88 44 88 88 40 44 0 0 0"></polygon>
