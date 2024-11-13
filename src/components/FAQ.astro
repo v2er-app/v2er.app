@@ -1,0 +1,58 @@
+---
+import '../styles/faq.css';
+
+const faqs = [
+  {
+    question: 'V2er 是什么？',
+    answer: 'V2er 是一个诞生于 2017 年的第三方 V2EX 客户端，与 V2EX 社区无其它关系。'
+  },
+  {
+    question: '为什么开发 V2er?',
+    answer: '由于 V2EX 社区未提供官方 APP，且市面上难以找到一款满意的第三方客户端，因此开发了这款应用。'
+  },
+  {
+    question: '为什么无法回复或发帖？',
+    answer: '可能的原因包括：新注册用户暂无权限、邮箱未验证、账户被限制、IP 被封、金币不足等。'
+  },
+  {
+    question: 'APP 网络经常加载失败?',
+    answer: 'V2EX 社区经常会出现 302、DNS 等网络错误，这种错误不是 V2er 本身可以解决的，建议换个时间再试。'
+  },
+  {
+    question: '是否支持 iOS？',
+    answer: '目前已经支持 iOS，可以在 App Store 下载使用。'
+  },
+  {
+    question: 'V2er 代码开源吗？',
+    answer: 'V2er 是开源项目，代码已在 GitHub 上公开，欢迎社区贡献。'
+  }
+];
+---
+
+<section class="faq" id="faq">
+  <div class="container">
+    <h2 class="section-title">常见问题</h2>
+    <p class="section-desc">
+      这里整理了用户最常遇到的一些问题和解答，如果没有找到你想要的答案，欢迎在 GitHub 上提出问题。
+    </p>
+    
+    <div class="faq-grid">
+      {faqs.map((faq, index) => (
+        <div class="faq-card">
+          <div class="faq-header">
+            <h3>{faq.question}</h3>
+            <span class="faq-number">0{index + 1}</span>
+          </div>
+          <p>{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="github-link">
+      <a href="https://github.com/v2er-app/Android/issues" target="_blank">
+        <i class="fab fa-github"></i>
+        在 GitHub 上提出问题
+      </a>
+    </div>
+  </div>
+</section> 

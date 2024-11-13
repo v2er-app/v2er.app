@@ -1,0 +1,38 @@
+.hero {
+  @apply min-h-screen flex items-center relative overflow-hidden;
+}
+
+.hero-content {
+  @apply container mx-auto flex flex-col lg:flex-row items-center gap-12;
+}
+
+.text-section {
+  @apply lg:w-1/2 space-y-8;
+}
+
+.text-section h1 {
+  @apply text-5xl lg:text-6xl font-bold leading-tight;
+  background: linear-gradient(to right, #fff, rgba(255,255,255,0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.download-buttons {
+  @apply flex flex-col sm:flex-row gap-4;
+}
+
+.store-button {
+  @apply inline-flex items-center gap-2 px-6 py-3 bg-white/10 
+         hover:bg-white/20 border border-white/10 rounded-lg 
+         transition-all backdrop-filter backdrop-blur-lg;
+}
+
+.preview-section {
+  @apply lg:w-1/2 flex justify-center gap-6;
+}
+
+.phone {
+  @apply h-[500px] lg:h-[600px] w-auto object-contain 
+         hover:-translate-y-2 transition-transform duration-300
+         filter drop-shadow-2xl;
+}

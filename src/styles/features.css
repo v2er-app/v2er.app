@@ -1,0 +1,29 @@
+.features {
+  @apply py-24 bg-black;
+}
+
+.feature-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto;
+}
+
+.feature-card {
+  @apply p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] 
+         hover:bg-white/[0.04] transition-all hover:-translate-y-1;
+}
+
+.feature-icon {
+  @apply w-14 h-14 rounded-xl bg-white/5 border border-white/10 
+         flex items-center justify-center mb-6;
+}
+
+.feature-icon i {
+  @apply text-2xl text-white;
+}
+
+.feature-card h3 {
+  @apply text-xl font-semibold mb-4;
+}
+
+.feature-card p {
+  @apply text-gray-400;
+} 

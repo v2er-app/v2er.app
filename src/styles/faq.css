@@ -1,0 +1,37 @@
+.faq {
+  @apply py-24 bg-black/50;
+}
+
+.faq-grid {
+  @apply max-w-3xl mx-auto grid gap-6;
+}
+
+.faq-card {
+  @apply p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] 
+         hover:bg-white/[0.04] transition-all;
+}
+
+.faq-header {
+  @apply flex justify-between items-start gap-4;
+}
+
+.faq-header h3 {
+  @apply text-xl font-semibold;
+}
+
+.faq-number {
+  @apply text-gray-400 text-sm;
+}
+
+.faq-card p {
+  @apply mt-4 text-gray-400 leading-relaxed;
+}
+
+.github-link {
+  @apply text-center mt-12;
+}
+
+.github-link a {
+  @apply inline-flex items-center gap-2 text-gray-400 
+         hover:text-white transition-colors;
+} 

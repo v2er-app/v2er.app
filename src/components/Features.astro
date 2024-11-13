@@ -1,0 +1,47 @@
+---
+import '../styles/features.css';
+
+const features = [
+  {
+    icon: 'fa-rocket',
+    title: '原生性能',
+    description: '基于原生技术开发，启动快速，响应灵敏，内存占用低，让浏览更加流畅自然。'
+  },
+  {
+    icon: 'fa-wand-magic-sparkles',
+    title: '精致设计',
+    description: '遵循平台设计规范，完美适配系统特性，提供一致且优雅的视觉体验。'
+  },
+  {
+    icon: 'fa-cubes',
+    title: '功能丰富',
+    description: '支持所有社区功能，额外提供手势操作、快捷分享等增强特性。'
+  },
+  {
+    icon: 'fa-arrows-rotate',
+    title: '持续更新',
+    description: '开源项目持续维护，及时跟进平台新特性，不断提升使用体验。'
+  }
+];
+---
+
+<section class="features" id="features">
+  <div class="container">
+    <h2 class="section-title">为什么选择 V2er？</h2>
+    <p class="section-desc">
+      原生应用体验，优雅的设计，强大的功能，这款专为 V2EX 社区打造的客户端，值得你现在就开始使用。
+    </p>
+
+    <div class="feature-grid">
+      {features.map(feature => (
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class={`fas ${feature.icon}`}></i>
+          </div>
+          <h3>{feature.title}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section> 

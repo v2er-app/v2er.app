@@ -1,0 +1,57 @@
+.reviews {
+  @apply py-24 bg-black;
+}
+
+.reviews-grid {
+  @apply grid md:grid-cols-2 gap-8 max-w-5xl mx-auto;
+}
+
+.review-card {
+  @apply p-8 rounded-2xl bg-white/[0.02] border border-white/[0.05] 
+         hover:bg-white/[0.04] transition-all relative;
+}
+
+.quote-mark {
+  @apply absolute -top-4 left-6 text-4xl text-white/10 font-serif;
+}
+
+.rating {
+  @apply flex gap-1 mb-4;
+}
+
+.rating i {
+  @apply text-yellow-500;
+}
+
+.review-content {
+  @apply text-gray-300 mb-6 text-lg relative z-10 leading-relaxed;
+}
+
+.review-footer {
+  @apply flex items-center justify-between mt-auto;
+}
+
+.review-author {
+  @apply space-y-1;
+}
+
+.author-name {
+  @apply text-white font-medium;
+}
+
+.review-date {
+  @apply text-gray-500 text-sm;
+}
+
+.store-icon {
+  @apply h-8 w-8 rounded-full bg-white/5 flex items-center justify-center;
+}
+
+.store-links {
+  @apply flex justify-center gap-6 mt-12;
+}
+
+.store-links a {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg 
+         bg-white/5 hover:bg-white/10 transition-all;
+} 

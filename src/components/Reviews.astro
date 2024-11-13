@@ -1,0 +1,73 @@
+---
+import '../styles/reviews.css';
+
+const reviews = [
+  {
+    content: '非常好用的 V2EX 客户端，界面简洁美观，功能齐全，最重要的是开源，值得信赖。',
+    author: 'Yifan Wang',
+    date: '2024-01-15',
+    rating: 5
+  },
+  {
+    content: '体验非常好，原生的性能体验，比网页版流畅很多，开发者很用心在维护，希望能一直更新下去。',
+    author: 'Alex Chen',
+    date: '2024-01-02',
+    rating: 5
+  },
+  {
+    content: '终于找到一个好用的 V2EX 客户端了，界面设计很精致，暗色模式也很舒服，赞！',
+    author: 'Leo Zhang',
+    date: '2023-12-28',
+    rating: 5
+  },
+  {
+    content: '功能完整，界面清爽，完全满足日常使用需求。支持开源项目，给开发者点赞！',
+    author: 'David Lin',
+    date: '2023-12-20',
+    rating: 5
+  }
+];
+---
+
+<section class="reviews" id="reviews">
+  <div class="container">
+    <h2 class="section-title">用户评价</h2>
+    <p class="section-desc">
+      来自 Google Play 和 App Store 的真实用户反馈
+    </p>
+
+    <div class="reviews-grid">
+      {reviews.map((review) => (
+        <div class="review-card">
+          <div class="quote-mark">"</div>
+          <div class="rating">
+            {Array.from({ length: review.rating }).map(() => (
+              <i class="fas fa-star"></i>
+            ))}
+          </div>
+          <p class="review-content">{review.content}</p>
+          <div class="review-footer">
+            <div class="review-author">
+              <p class="author-name">{review.author}</p>
+              <p class="review-date">{review.date}</p>
+            </div>
+            <div class="store-icon">
+              <i class="fab fa-google-play"></i>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="store-links">
+      <a href="https://play.google.com/store/apps/details?id=me.ghui.v2er" target="_blank">
+        <i class="fab fa-google-play"></i>
+        Google Play
+      </a>
+      <a href="https://apps.apple.com/app/id1596137027" target="_blank">
+        <i class="fab fa-apple"></i>
+        App Store
+      </a>
+    </div>
+  </div>
+</section> 

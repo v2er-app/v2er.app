@@ -1,0 +1,24 @@
+:root {
+  --accent: 51, 51, 67;
+  --text-primary: 255, 255, 255;
+  --text-secondary: 153, 153, 153;
+  --bg-primary: 0, 0, 0;
+  --bg-secondary: 17, 17, 17;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section-title {
+  @apply text-4xl font-bold text-center mb-4;
+  background: linear-gradient(to right, #fff, rgba(255,255,255,0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-desc {
+  @apply text-gray-400 text-center mb-12 max-w-2xl mx-auto;
+} 
