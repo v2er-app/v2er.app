@@ -7,9 +7,15 @@
 }
 
 .feature-card {
-  @apply p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] 
-         hover:bg-white/[0.04] transition-all hover:-translate-y-1
+  @apply p-6 rounded-2xl bg-white/[0.02] border border-white/[0.12] 
+         hover:bg-white/[0.04] hover:border-white/[0.2] transition-all hover:-translate-y-1
          flex flex-col;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .feature-icon {
@@ -49,4 +55,12 @@
   .feature-icon {
     @apply mx-auto;
   }
+} 
+
+.features-card img {
+  transition: all 0.3s ease;
+}
+
+.features-card:hover img {
+  transform: scale(1.05);
 } 

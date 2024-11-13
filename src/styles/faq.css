@@ -7,8 +7,21 @@
 }
 
 .faq-card {
-  @apply p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] 
-         hover:bg-white/[0.04] transition-all;
+  @apply p-6 rounded-2xl bg-white/[0.02] border border-white/[0.12] 
+         hover:bg-white/[0.04] hover:border-white/[0.2] transition-all hover:-translate-y-1;
+  transition: all 0.3s ease;
+}
+
+.faq-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 如果需要保持展开时的样式，可以添加 */
+.faq-card[data-expanded="true"] {
+  @apply bg-white/[0.04] border-white/[0.2];
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .faq-header {
