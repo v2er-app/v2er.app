@@ -10,10 +10,13 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content="V2er - 优雅的 V2EX 客户端，支持 iOS 和 Android" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<meta property="og:title" content="V2er - 优雅的 V2EX 客户端" />
+		<meta property="og:description" content="简洁的设计，丰富的功能，流畅的交互体验" />
+		<meta property="og:image" content="/og-image.png" />
 		<title>{title}</title>
 	</head>
 	<body>
@@ -22,19 +25,20 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
+		--accent: 0, 122, 255;
+		--accent-light: 88, 86, 214;
+		--accent-dark: 0, 64, 221;
 		--accent-gradient: linear-gradient(
 			45deg,
 			rgb(var(--accent)),
 			rgb(var(--accent-light)) 30%,
-			white 60%
+			rgb(var(--accent-dark)) 60%
 		);
 	}
 	html {
-		font-family: system-ui, sans-serif;
+		font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 		background: #13151a;
+		color: #fff;
 	}
 	code {
 		font-family:
