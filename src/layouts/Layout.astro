@@ -7,57 +7,19 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="V2er - 优雅的 V2EX 客户端，支持 iOS 和 Android" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
 		<meta property="og:title" content="V2er - 优雅的 V2EX 客户端" />
 		<meta property="og:description" content="简洁的设计，丰富的功能，流畅的交互体验" />
 		<meta property="og:image" content="/og-image.png" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="bg-black text-white">
 		<slot />
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 51, 51, 67;
-		--text-primary: 255, 255, 255;
-		--text-secondary: 153, 153, 153;
-		--bg-primary: 0, 0, 0;
-		--bg-secondary: 17, 17, 17;
-	}
-	html {
-		font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-		background: rgb(var(--bg-primary));
-		color: rgb(var(--text-primary));
-	}
-	body {
-		margin: 0;
-		padding: 0;
-		line-height: 1.6;
-	}
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--text-primary: 229, 229, 229;
-			--text-secondary: 153, 153, 153;
-			--bg-primary: 24, 24, 24;
-			--bg-secondary: 36, 36, 36;
-		}
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
