@@ -6,7 +6,7 @@
         <rect id="background" fill="#FFFFFF" x="0" y="0" width="180" height="180" rx="40"></rect>
         <!-- Original logo, scaled and centered with uniform padding -->
         <g id="logo_svg" transform="translate(46, 46)" fill="#000000" fill-rule="nonzero">
-            <polygon id="logo" points="44.428464 44.8074226 0.87947880 88 44.281884 88 88 44.8074226 43.165622 0 0 0"></polygon>
+            <polygon id="logo" points="44 40 0 88 44 88 88 40 44 0 0 0"></polygon>
         </g>
     </g>
 </svg>
