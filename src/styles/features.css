@@ -22,10 +22,11 @@
 }
 
 .feature-card {
-  @apply p-6 rounded-2xl bg-white/[0.02] border border-white/[0.12] 
-         hover:bg-white/[0.04] hover:border-white/[0.2] transition-all hover:-translate-y-1
-         flex flex-col;
-  transition: all 0.3s ease;
+  @apply p-8 rounded-2xl bg-white/[0.02]
+         border border-zinc-800
+         transition-all relative
+         hover:bg-zinc-900 hover:border-zinc-700
+         transform hover:-translate-y-1;
 }
 
 .feature-card:hover {

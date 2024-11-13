@@ -26,4 +26,13 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 4rem;
+}
+
+/* Update the FAQ card styles */
+.faq-card {
+  @apply p-8 rounded-2xl bg-white/[0.02]
+         border border-zinc-800
+         transition-all relative
+         hover:bg-zinc-900 hover:border-zinc-700
+         transform hover:-translate-y-1;
 } 
