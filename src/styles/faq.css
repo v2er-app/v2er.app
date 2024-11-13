@@ -43,11 +43,11 @@
   @apply mt-4 text-gray-400 leading-relaxed;
 }
 
-.github-link {
+.social-link {
   @apply text-center mt-12;
 }
 
-.github-link a {
+.social-link a {
   @apply inline-flex items-center gap-2 text-gray-400 
          hover:text-white transition-colors;
 } 
