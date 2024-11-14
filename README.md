@@ -1,54 +1,66 @@
-# Astro Starter Kit: Basics
+# V2er Landing Page
 
-```sh
-npm create astro@latest -- --template basics
+A modern, responsive landing page for V2er - an elegant V2EX client app available for both iOS and Android platforms.
+
+## About
+
+This landing page showcases V2er, a native mobile client for V2EX community. Built with Astro and TailwindCSS, the website features:
+
+- Modern, responsive design with dark theme
+- Smooth animations and transitions
+- Cross-platform app previews
+- Feature highlights
+- User reviews
+- FAQ section
+- Related products
+
+## Features Highlighted
+
+- Native performance with smooth experience
+- Elegant UI design following platform guidelines
+- Rich functionality including node navigation, post browsing, commenting, notifications
+- Open source and free, no ads or in-app purchases
+
+## Tech Stack
+
+- [Astro](https://astro.build) - Static Site Generator
+- [TailwindCSS](https://tailwindcss.com) - Styling
+- [Font Awesome](https://fontawesome.com) - Icons
+- Modern CSS features including:
+  - CSS Grid
+  - Flexbox
+  - CSS Variables
+  - Backdrop filters
+  - Smooth animations
+
+## Development
+
+**Install dependencies**
+```
+npm install
+```
+**Start development server**
+```
+npm run dev
+```
+**Build for production**
+```
+npm run build
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Links
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- App Store: https://apps.apple.com/app/id1596137027
+- Play Store: https://play.google.com/store/apps/details?id=me.ghui.v2er
+- GitHub: https://github.com/v2er-app
+- Telegram Group: https://t.me/v2er_app
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## License
 
-## 🚀 Project Structure
+MIT License
 
-Inside of your Astro project, you'll see the following folders and files:
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+-----
+> Build by Cursor
