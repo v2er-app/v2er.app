@@ -20,17 +20,19 @@
 }
 
 .product-card {
-    @apply p-8 rounded-2xl bg-white/[0.02]
-    border border-zinc-800
-    transition-all relative
-    hover:bg-zinc-900 hover:border-zinc-700
-    transform hover:-translate-y-1;
-  transition: all 0.3s ease;
+    padding: 2rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgb(39, 39, 42);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
 .product-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    background: rgb(24, 24, 27);
+    border-color: rgb(63, 63, 70);
 }
 
 .product-header {
@@ -47,6 +49,11 @@
   background: #fff;
   padding: 6px;
   object-fit: contain;
+}
+
+.product-logo.no-bg {
+  background: transparent;
+  padding: 0;
 }
 
 .product-content h3 {
@@ -101,5 +108,9 @@
     width: 40px;
     height: 40px;
     padding: 4px;
+  }
+
+  .product-logo.no-bg {
+    padding: 0;
   }
 } 
