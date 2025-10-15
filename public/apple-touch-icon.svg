@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="180px" height="180px" viewBox="0 0 180 180" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>apple-touch-icon</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="180" height="180"></rect>
+    </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <!-- iOS style background with rounded corners -->
-        <rect id="background" fill="#F5F5F5" x="0" y="0" width="180" height="180"></rect>
-        <!-- Original logo, scaled and centered with uniform padding -->
-        <g id="logo_svg" transform="translate(46, 46)" fill="#000000" fill-rule="nonzero">
-            <polygon id="logo" points="44 40 0 88 44 88 88 40 44 0 0 0"></polygon>
-        </g>
+        <!-- iOS style background (Apple adds rounded corners automatically) -->
+        <use id="background" fill="#FFFFFF" xlink:href="#path-1"></use>
+        <!-- Rounded chevron arrow -->
+        <path d="M60,45 L100,90 L60,135 C56,139 50,139 46,135 C42,131 42,125 46,121 L72,90 L46,59 C42,55 42,49 46,45 C50,41 56,41 60,45 Z"
+              id="chevron"
+              fill="#1C1C1E"
+              fill-rule="nonzero"
+              transform="translate(73, 90) scale(1.4, 1.4) translate(-73, -90)">
+        </path>
     </g>
 </svg> 
