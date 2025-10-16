@@ -28,7 +28,8 @@
       --gray-900: 17, 24, 39;
       --gray-950: 3, 7, 18;
 
-      --background: 255, 255, 255;
+      --background: 242, 243, 243; /* #f2f3f3 - subtle gray background */
+      --card-background: 255, 255, 255; /* white cards */
       --foreground: 17, 24, 39; /* gray-900 */
       --text-secondary: 75, 85, 99; /* gray-600 */
       --border-color: 243, 244, 246; /* gray-100 */
@@ -36,7 +37,8 @@
     }
 
     [data-theme="dark"] {
-      --background: 3, 7, 18; /* gray-950 */
+      --background: 15, 15, 17; /* slightly lighter than pure black */
+      --card-background: 25, 25, 28; /* dark gray cards */
       --foreground: 255, 255, 255;
       --text-secondary: 156, 163, 175; /* gray-400 */
       --border-color: 31, 41, 55; /* gray-800 */
@@ -63,7 +65,7 @@
     header {
       padding: 20px 0;
       border-bottom: 1px solid rgba(var(--border-color), 0.6);
-      background: rgb(var(--background));
+      background: rgb(var(--card-background));
     }
 
     .header-content {
@@ -173,7 +175,7 @@
     }
 
     .product-card {
-      background: rgb(var(--background));
+      background: rgb(var(--card-background));
       border-radius: 1.75rem; /* rounded-3xl */
       padding: 20px;
       text-decoration: none;
