@@ -129,15 +129,9 @@
       width: 48px;
       height: 48px;
       border-radius: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: 700;
-      background: linear-gradient(135deg, rgb(var(--leaf-green)), rgb(var(--leaf-green-dark)));
-      color: white;
       box-shadow: 0 4px 12px rgba(var(--leaf-green), 0.3);
       transition: all 0.2s ease;
+      object-fit: cover;
     }
 
     .logo:hover .logo-icon {
@@ -178,6 +172,19 @@
     .theme-toggle:focus-visible {
       outline: 2px solid rgb(var(--accent));
       outline-offset: 4px;
+    }
+
+    .theme-toggle svg {
+      transition: all 0.3s ease;
+    }
+
+    /* Theme icon colors - matching pease.day */
+    [data-theme="light"] .theme-toggle svg {
+      color: rgb(107, 114, 128); /* gray-600 */
+    }
+
+    [data-theme="dark"] .theme-toggle svg {
+      color: rgb(250, 204, 21); /* yellow-400 */
     }
 
     /* Hero Section */
@@ -414,11 +421,14 @@
     <div class="container">
       <div class="header-content">
         <a href="/" class="logo">
-          <div class="logo-icon">V</div>
-          <span class="logo-text">V2er</span>
+          <img src="/favicon.png" alt="Share" class="logo-icon">
+          <span class="logo-text">Share</span>
         </a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <span id="themeIcon">🌙</span>
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Moon icon (default for light mode) -->
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
         </button>
       </div>
     </div>
@@ -494,6 +504,10 @@
     const themeIcon = document.getElementById('themeIcon');
     const html = document.documentElement;
 
+    // SVG icon paths
+    const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+    const sunIcon = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+
     // Check for saved theme preference or default to light mode
     const currentTheme = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-theme', currentTheme);
@@ -512,7 +526,8 @@
 
     function updateThemeIcon(theme: string) {
       if (themeIcon) {
-        themeIcon.textContent = theme === 'light' ? '🌙' : '☀️';
+        // Light mode shows moon, dark mode shows sun (like pease.day)
+        themeIcon.innerHTML = theme === 'light' ? moonIcon : sunIcon;
       }
     }
 
