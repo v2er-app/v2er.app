@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import RelatedProducts from '../components/RelatedProducts.astro';
+---
+
+<Layout title="发现更多 - V2er">
+  <Navbar />
+  <main class="overflow-x-hidden pt-24">
+    <!-- Hero Section -->
+    <section class="py-16 px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent">
+        发现更多
+      </h1>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        探索更多有趣的应用与工具
+      </p>
+    </section>
+
+    <!-- Products Section -->
+    <RelatedProducts />
+  </main>
+  <Footer />
+</Layout>
