@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "lastUpdated": "2025-01-16T10:00:00Z",
+  "items": [
+    {
+      "id": "shuangpin",
+      "name": "试试双拼",
+      "description": "投入一周时间，收获终身效率。这项简单实用的技能，值得你现在就开始学习。",
+      "url": "https://ulpb.app",
+      "icon": "/image/shuangpin-logo.webp"
+    },
+    {
+      "id": "daystill",
+      "name": "Daystill",
+      "description": "跟踪事件和特殊日子, 你的最佳倒数日应用",
+      "url": "https://daystill.app",
+      "icon": "https://daystill.pages.dev/logo.webp"
+    },
+    {
+      "id": "pease",
+      "name": "Pease",
+      "description": "美观简约的环境音混音器，为专注、放松或睡眠创造完美的声音环境",
+      "url": "https://pease.day",
+      "icon": "https://pease.day/icon-128x128.png",
+      "iconClass": "no-bg"
+    }
+  ],
+  "changelog": [
+    {
+      "version": 1,
+      "date": "2025-01-16",
+      "changes": "初始版本，包含3个产品"
+    }
+  ]
+}

@@ -1,0 +1,438 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="发现更多有趣的应用与工具">
+  <title>发现更多 - V2er</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Tailwind CSS inspired neutral palette */
+      --gray-50: 249, 250, 251;
+      --gray-100: 243, 244, 246;
+      --gray-400: 156, 163, 175;
+      --gray-600: 75, 85, 99;
+      --gray-900: 17, 24, 39;
+      --gray-950: 3, 7, 18;
+
+      --background: 242, 243, 243; /* #f2f3f3 - subtle gray background */
+      --card-background: 255, 255, 255; /* white cards */
+      --foreground: 17, 24, 39; /* gray-900 */
+      --text-secondary: 75, 85, 99; /* gray-600 */
+      --border-color: 243, 244, 246; /* gray-100 */
+      --accent: 236, 72, 153; /* pink-500 */
+    }
+
+    [data-theme="dark"] {
+      --background: 15, 15, 17; /* slightly lighter than pure black */
+      --card-background: 25, 25, 28; /* dark gray cards */
+      --foreground: 255, 255, 255;
+      --text-secondary: 156, 163, 175; /* gray-400 */
+      --border-color: 31, 41, 55; /* gray-800 */
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'PingFang SC',
+                   'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: rgb(var(--background));
+      color: rgb(var(--foreground));
+      min-height: 100vh;
+      transition: background 0.3s ease, color 0.3s ease;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(var(--border-color), 0.6);
+      background: rgb(var(--card-background));
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: rgb(var(--foreground));
+      transition: transform 0.2s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 0.75rem;
+      transition: all 0.2s ease;
+      object-fit: cover;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid rgba(var(--border-color), 0.6);
+      width: 44px;
+      height: 44px;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .theme-toggle:hover {
+      border-color: rgba(var(--foreground), 0.2);
+      background: rgba(var(--border-color), 0.3);
+    }
+
+    .theme-toggle:active {
+      transform: scale(0.95);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid rgb(var(--accent));
+      outline-offset: 4px;
+    }
+
+    .theme-toggle svg {
+      transition: all 0.3s ease;
+    }
+
+    /* Theme icon colors */
+    .theme-toggle svg {
+      color: rgb(var(--text-secondary));
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 8vw, 60px);
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.04em; /* tracking-tighter */
+      color: rgb(var(--foreground));
+      text-wrap: balance;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: rgb(var(--text-secondary));
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Products Grid */
+    .products {
+      padding: 40px 0 80px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: rgb(var(--card-background));
+      border-radius: 1.75rem; /* rounded-3xl */
+      padding: 20px;
+      text-decoration: none;
+      color: rgb(var(--foreground));
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+      transition: all 0.2s ease;
+      box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.06),
+        0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="dark"] .product-card {
+      box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.4),
+        0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .product-card:hover {
+      transform: translateY(-1px);
+      box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.08),
+        0 2px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    [data-theme="dark"] .product-card:hover {
+      box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.5),
+        0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .product-card:active {
+      transform: scale(0.98);
+    }
+
+    .product-card:focus-visible {
+      outline: 2px solid rgb(var(--accent));
+      outline-offset: 4px;
+    }
+
+    .product-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .product-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .product-name {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: rgb(var(--foreground));
+      letter-spacing: -0.01em;
+    }
+
+    .product-description {
+      font-size: 15px;
+      line-height: 1.5;
+      color: rgb(var(--text-secondary));
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 0 40px;
+      text-align: center;
+      border-top: 1px solid rgba(var(--border-color), 0.6);
+      margin-top: 40px;
+    }
+
+    footer p {
+      font-size: 14px;
+      color: rgb(var(--text-secondary));
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 0 40px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .products-grid {
+        gap: 12px;
+      }
+
+      .product-card {
+        padding: 16px;
+        gap: 16px;
+      }
+
+      .product-icon {
+        width: 56px;
+        height: 56px;
+      }
+
+      .product-name {
+        font-size: 18px;
+      }
+
+      .product-description {
+        font-size: 14px;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .product-card {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .product-card:nth-child(1) { animation-delay: 0.1s; }
+    .product-card:nth-child(2) { animation-delay: 0.2s; }
+    .product-card:nth-child(3) { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <a href="/" class="logo">
+          <img src="/favicon.png" alt="Share" class="logo-icon">
+          <span class="logo-text">Share</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Moon icon (default for light mode) -->
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <h1 id="hero-title">发现更多</h1>
+      <p>更多独立开发的精品应用，支持 V2er 项目持续发展</p>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="products" aria-label="精选产品列表">
+    <div class="container">
+      <div class="products-grid" role="list">
+        <!-- Product 1: 试试双拼 -->
+        <a href="https://ulpb.app" target="_blank" rel="noopener noreferrer"
+           class="product-card" role="listitem"
+           aria-label="了解更多关于试试双拼 - 投入一周时间，收获终身效率的双拼输入法学习应用">
+          <img src="/image/shuangpin-logo.webp" alt="试试双拼应用图标" class="product-icon">
+          <div class="product-content">
+            <h3 class="product-name">试试双拼</h3>
+            <p class="product-description">投入一周时间，收获终身效率</p>
+          </div>
+        </a>
+
+        <!-- Product 2: Daystill -->
+        <a href="https://daystill.app" target="_blank" rel="noopener noreferrer"
+           class="product-card" role="listitem"
+           aria-label="了解更多关于Daystill - 跟踪事件和特殊日子的倒数日应用">
+          <img src="https://daystill.pages.dev/logo.webp" alt="Daystill应用图标" class="product-icon">
+          <div class="product-content">
+            <h3 class="product-name">Daystill</h3>
+            <p class="product-description">跟踪事件和特殊日子，你的最佳倒数日应用</p>
+          </div>
+        </a>
+
+        <!-- Product 3: Pease -->
+        <a href="https://pease.day" target="_blank" rel="noopener noreferrer"
+           class="product-card" role="listitem"
+           aria-label="了解更多关于Pease - 美观简约的环境音混音器应用">
+          <img src="https://pease.day/icon-128x128.png" alt="Pease应用图标" class="product-icon">
+          <div class="product-content">
+            <h3 class="product-name">Pease</h3>
+            <p class="product-description">美观简约的环境音混音器，创造完美的声音环境</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2025 V2er. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const html = document.documentElement;
+
+    // SVG icon paths
+    const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+    const sunIcon = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    html.setAttribute('data-theme', currentTheme);
+    updateThemeIcon(currentTheme);
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+      });
+    }
+
+    function updateThemeIcon(theme: string) {
+      if (themeIcon) {
+        // Light mode shows moon, dark mode shows sun (like pease.day)
+        themeIcon.innerHTML = theme === 'light' ? moonIcon : sunIcon;
+      }
+    }
+
+    // Detect system theme preference
+    if (!localStorage.getItem('theme')) {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const systemTheme = prefersDark ? 'dark' : 'light';
+      html.setAttribute('data-theme', systemTheme);
+      updateThemeIcon(systemTheme);
+    }
+  </script>
+</body>
+</html>
