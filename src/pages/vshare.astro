@@ -166,41 +166,46 @@
 
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      max-width: 1000px;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
     .product-card {
       background: rgb(var(--background));
-      outline: 1px solid rgba(var(--foreground), 0.05);
-      border-radius: 1.5rem; /* rounded-2xl */
-      padding: 32px;
+      border-radius: 1.75rem; /* rounded-3xl */
+      padding: 20px;
       text-decoration: none;
       color: rgb(var(--foreground));
       display: flex;
-      flex-direction: column;
-      min-height: 300px;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
       position: relative;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      transition: all 0.2s ease;
+      box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.06),
+        0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
     [data-theme="dark"] .product-card {
-      outline-color: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.4),
+        0 1px 3px rgba(0, 0, 0, 0.3);
     }
 
     .product-card:hover {
-      transform: translateY(-2px);
-      outline-color: rgba(var(--foreground), 0.1);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transform: translateY(-1px);
+      box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.08),
+        0 2px 4px rgba(0, 0, 0, 0.06);
     }
 
     [data-theme="dark"] .product-card:hover {
-      outline-color: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.5),
+        0 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     .product-card:active {
@@ -213,57 +218,30 @@
     }
 
     .product-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 1rem;
-      margin-bottom: 24px;
-      object-fit: contain;
-      transition: transform 0.2s ease;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
     }
 
-    .product-card:hover .product-icon {
-      transform: scale(1.03);
+    .product-content {
+      flex: 1;
+      min-width: 0;
     }
 
     .product-name {
       font-size: 20px;
       font-weight: 600;
-      margin-bottom: 12px;
+      margin-bottom: 4px;
       color: rgb(var(--foreground));
       letter-spacing: -0.01em;
     }
 
     .product-description {
       font-size: 15px;
-      line-height: 1.7;
+      line-height: 1.5;
       color: rgb(var(--text-secondary));
-      margin-bottom: 24px;
-      flex-grow: 1;
-    }
-
-    .product-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: rgb(var(--foreground));
-      font-weight: 500;
-      font-size: 14px;
-      transition: gap 0.3s ease;
-      margin-top: auto;
-      opacity: 0.7;
-    }
-
-    .product-card:hover .product-link {
-      gap: 12px;
-      opacity: 1;
-    }
-
-    .arrow {
-      transition: transform 0.3s ease;
-    }
-
-    .product-card:hover .arrow {
-      transform: translateX(4px);
     }
 
     /* Footer */
@@ -296,19 +274,17 @@
       }
 
       .products-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 12px;
       }
 
       .product-card {
-        padding: 28px;
-        min-height: 280px;
+        padding: 16px;
+        gap: 16px;
       }
 
       .product-icon {
-        width: 72px;
-        height: 72px;
-        margin-bottom: 20px;
+        width: 56px;
+        height: 56px;
       }
 
       .product-name {
@@ -373,46 +349,37 @@
     <div class="container">
       <div class="products-grid" role="list">
         <!-- Product 1: 试试双拼 -->
-        <article class="product-card" role="listitem">
-          <a href="https://ulpb.app" target="_blank" rel="noopener noreferrer"
-             aria-label="了解更多关于试试双拼 - 投入一周时间，收获终身效率的双拼输入法学习应用">
-            <img src="/image/shuangpin-logo.webp" alt="试试双拼应用图标" class="product-icon">
+        <a href="https://ulpb.app" target="_blank" rel="noopener noreferrer"
+           class="product-card" role="listitem"
+           aria-label="了解更多关于试试双拼 - 投入一周时间，收获终身效率的双拼输入法学习应用">
+          <img src="/image/shuangpin-logo.webp" alt="试试双拼应用图标" class="product-icon">
+          <div class="product-content">
             <h3 class="product-name">试试双拼</h3>
-            <p class="product-description">投入一周时间，收获终身效率。这项简单实用的技能，值得你现在就开始学习。</p>
-            <span class="product-link" aria-hidden="true">
-              了解更多
-              <span class="arrow">→</span>
-            </span>
-          </a>
-        </article>
+            <p class="product-description">投入一周时间，收获终身效率</p>
+          </div>
+        </a>
 
         <!-- Product 2: Daystill -->
-        <article class="product-card" role="listitem">
-          <a href="https://daystill.app" target="_blank" rel="noopener noreferrer"
-             aria-label="了解更多关于Daystill - 跟踪事件和特殊日子的倒数日应用">
-            <img src="https://daystill.pages.dev/logo.webp" alt="Daystill应用图标" class="product-icon">
+        <a href="https://daystill.app" target="_blank" rel="noopener noreferrer"
+           class="product-card" role="listitem"
+           aria-label="了解更多关于Daystill - 跟踪事件和特殊日子的倒数日应用">
+          <img src="https://daystill.pages.dev/logo.webp" alt="Daystill应用图标" class="product-icon">
+          <div class="product-content">
             <h3 class="product-name">Daystill</h3>
-            <p class="product-description">跟踪事件和特殊日子，你的最佳倒数日应用。精美的界面，强大的功能。</p>
-            <span class="product-link" aria-hidden="true">
-              了解更多
-              <span class="arrow">→</span>
-            </span>
-          </a>
-        </article>
+            <p class="product-description">跟踪事件和特殊日子，你的最佳倒数日应用</p>
+          </div>
+        </a>
 
         <!-- Product 3: Pease -->
-        <article class="product-card" role="listitem">
-          <a href="https://pease.day" target="_blank" rel="noopener noreferrer"
-             aria-label="了解更多关于Pease - 美观简约的环境音混音器应用">
-            <img src="https://pease.day/icon-128x128.png" alt="Pease应用图标" class="product-icon">
+        <a href="https://pease.day" target="_blank" rel="noopener noreferrer"
+           class="product-card" role="listitem"
+           aria-label="了解更多关于Pease - 美观简约的环境音混音器应用">
+          <img src="https://pease.day/icon-128x128.png" alt="Pease应用图标" class="product-icon">
+          <div class="product-content">
             <h3 class="product-name">Pease</h3>
-            <p class="product-description">美观简约的环境音混音器，为专注、放松或睡眠创造完美的声音环境。</p>
-            <span class="product-link" aria-hidden="true">
-              了解更多
-              <span class="arrow">→</span>
-            </span>
-          </a>
-        </article>
+            <p class="product-description">美观简约的环境音混音器，创造完美的声音环境</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
