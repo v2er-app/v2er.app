@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "lastUpdated": "2025-01-16T10:00:00Z",
+  "version": 2,
+  "lastUpdated": "2025-01-16T12:00:00Z",
   "items": [
     {
       "id": "shuangpin",
@@ -26,6 +26,11 @@
     }
   ],
   "changelog": [
+    {
+      "version": 2,
+      "date": "2025-01-16",
+      "changes": "测试版本更新通知功能"
+    },
     {
       "version": 1,
       "date": "2025-01-16",
