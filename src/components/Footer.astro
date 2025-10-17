@@ -2,26 +2,27 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="py-8 mt-16 border-t border-white/10">
+<footer class="py-8 mt-16 border-t border-gray-300 dark:border-white/10">
   <div class="container mx-auto px-4">
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-2">
-        <img src="/favicon-dark.svg" alt="V2er Logo" class="h-8 w-8">
-        <span class="text-gray-400">© {currentYear} V2er. All rights reserved.</span>
+        <img src="/favicon-dark.svg" alt="V2er Logo" class="h-8 w-8 dark:block hidden">
+        <img src="/favicon-light.svg" alt="V2er Logo" class="h-8 w-8 dark:hidden block">
+        <span class="text-gray-600 dark:text-gray-400">© {currentYear} V2er. All rights reserved.</span>
       </div>
-      
+
       <div class="flex items-center gap-6">
-        <a 
-          href="https://github.com/v2er-app" 
-          target="_blank" 
-          class="text-gray-400 hover:text-white transition-colors"
+        <a
+          href="https://github.com/v2er-app"
+          target="_blank"
+          class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
         >
           <i class="fab fa-github text-xl"></i>
         </a>
-        <a 
-          href="https://t.me/v2er_app" 
-          target="_blank" 
-          class="text-gray-400 hover:text-white transition-colors"
+        <a
+          href="https://t.me/v2er_app"
+          target="_blank"
+          class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
         >
           <i class="fab fa-telegram text-xl"></i>
         </a>
