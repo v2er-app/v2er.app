@@ -397,8 +397,8 @@
     // Theme toggle functionality
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
-    const favicon = document.getElementById('favicon');
-    const logoIcon = document.querySelector('.logo-icon');
+    const favicon = document.getElementById('favicon') as HTMLLinkElement | null;
+    const logoIcon = document.querySelector('.logo-icon') as HTMLImageElement | null;
     const html = document.documentElement;
 
     // SVG icon paths
