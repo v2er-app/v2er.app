@@ -9,7 +9,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="zh-CN" class="dark">
+<html lang="zh-CN">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="V2er - 优雅的 V2EX 客户端，支持 iOS 和 Android" />
@@ -17,8 +17,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
 		<link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-		<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
-		<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#000000" />
 		<meta property="og:title" content="V2er - 优雅的 V2EX 客户端" />
 		<meta property="og:description" content="简洁的设计，丰富的功能，流畅的交互体验" />
 		<meta property="og:image" content="/og-image.png" />
@@ -30,20 +29,7 @@ const { title } = Astro.props;
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	</head>
-	<body class="bg-white dark:bg-black text-black dark:text-white transition-colors">
+	<body class="bg-black text-white">
 		<slot />
-		<script is:inline>
-			// Initialize theme on page load
-			(function() {
-				const savedTheme = localStorage.getItem('theme');
-				const shouldBeDark = savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-				if (shouldBeDark) {
-					document.documentElement.classList.add('dark');
-				} else {
-					document.documentElement.classList.remove('dark');
-				}
-			})();
-		</script>
 	</body>
 </html>
