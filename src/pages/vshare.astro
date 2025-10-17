@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="发现更多有趣的应用与工具">
   <title>发现更多 - V2er</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon-light.svg" id="favicon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -325,7 +325,7 @@
     <div class="container">
       <div class="header-content">
         <a href="/" class="logo">
-          <img src="/favicon.png" alt="Share" class="logo-icon">
+          <img src="/favicon-light.svg" alt="Share" class="logo-icon" id="logoIcon">
           <span class="logo-text">Share</span>
         </a>
         <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -397,6 +397,8 @@
     // Theme toggle functionality
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
+    const favicon = document.getElementById('favicon');
+    const logoIcon = document.querySelector('.logo-icon');
     const html = document.documentElement;
 
     // SVG icon paths
@@ -406,7 +408,7 @@
     // Check for saved theme preference or default to light mode
     const currentTheme = localStorage.getItem('theme') || 'light';
     html.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
+    updateTheme(currentTheme);
 
     if (themeToggle) {
       themeToggle.addEventListener('click', () => {
@@ -415,14 +417,25 @@
 
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+        updateTheme(newTheme);
       });
     }
 
-    function updateThemeIcon(theme: string) {
+    function updateTheme(theme: string) {
+      // Update theme icon
       if (themeIcon) {
         // Light mode shows moon, dark mode shows sun (like pease.day)
         themeIcon.innerHTML = theme === 'light' ? moonIcon : sunIcon;
+      }
+
+      // Update favicon
+      if (favicon) {
+        favicon.href = theme === 'light' ? '/favicon-light.svg' : '/favicon-dark.svg';
+      }
+
+      // Update logo icon
+      if (logoIcon) {
+        logoIcon.src = theme === 'light' ? '/favicon-light.svg' : '/favicon-dark.svg';
       }
     }
 
@@ -431,7 +444,7 @@
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       const systemTheme = prefersDark ? 'dark' : 'light';
       html.setAttribute('data-theme', systemTheme);
-      updateThemeIcon(systemTheme);
+      updateTheme(systemTheme);
     }
   </script>
 </body>
