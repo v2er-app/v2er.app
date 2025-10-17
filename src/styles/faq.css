@@ -1,5 +1,5 @@
 .faq {
-  @apply py-24 bg-gray-50 dark:bg-black/50;
+  @apply py-24 bg-black/50;
 }
 
 .faq-grid {
@@ -7,38 +7,24 @@
 }
 
 .faq-card {
-    @apply p-8 rounded-2xl bg-gray-100 dark:bg-white/[0.02]
-    border border-gray-300 dark:border-zinc-800
+    @apply p-8 rounded-2xl bg-white/[0.02]
+    border border-zinc-800
     transition-all relative
-    hover:bg-gray-200 dark:hover:bg-zinc-900 hover:border-gray-400 dark:hover:border-zinc-700
+    hover:bg-zinc-900 hover:border-zinc-700
     transform hover:-translate-y-1;
   transition: all 0.3s ease;
 }
 
 .faq-card:hover {
   transform: translateY(-8px);
-}
-
-.dark .faq-card:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.faq-card:hover:not(.dark .faq-card) {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* 如果需要保持展开时的样式，可以添加 */
 .faq-card[data-expanded="true"] {
-  @apply bg-gray-200 dark:bg-white/[0.04] border-gray-400 dark:border-white/[0.2];
+  @apply bg-white/[0.04] border-white/[0.2];
   transform: translateY(-8px);
-}
-
-.dark .faq-card[data-expanded="true"] {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.faq-card[data-expanded="true"]:not(.dark .faq-card) {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .faq-header {
@@ -46,15 +32,15 @@
 }
 
 .faq-header h3 {
-  @apply text-xl font-semibold text-gray-900 dark:text-white;
+  @apply text-xl font-semibold;
 }
 
 .faq-number {
-  @apply text-gray-600 dark:text-gray-400 text-sm;
+  @apply text-gray-400 text-sm;
 }
 
 .faq-card p {
-  @apply mt-4 text-gray-600 dark:text-gray-400 leading-relaxed;
+  @apply mt-4 text-gray-400 leading-relaxed;
 }
 
 .social-link {
@@ -62,6 +48,6 @@
 }
 
 .social-link a {
-  @apply inline-flex items-center gap-2 text-gray-600 dark:text-gray-400
-         hover:text-gray-900 dark:hover:text-white transition-colors;
+  @apply inline-flex items-center gap-2 text-gray-400 
+         hover:text-white transition-colors;
 } 

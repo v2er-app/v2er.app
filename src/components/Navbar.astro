@@ -7,7 +7,7 @@ const navItems = [
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-black/50 border-b border-gray-200 dark:border-transparent transition-colors">
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-black/50">
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-between h-24">
       <!-- Logo Section -->
@@ -15,79 +15,52 @@ const navItems = [
         <img
           src="/favicon-dark.svg"
           alt="V2er Logo"
-          class="h-12 w-12 group-hover:scale-110 transition-transform dark:block hidden"
-        >
-        <img
-          src="/favicon-light.svg"
-          alt="V2er Logo"
-          class="h-12 w-12 group-hover:scale-110 transition-transform dark:hidden block"
+          class="h-12 w-12 group-hover:scale-110 transition-transform"
         >
         <div class="flex flex-col">
-          <span class="font-extrabold text-2xl tracking-tight font-['Inter'] text-gray-900 dark:text-gray-100">
+          <span class="font-extrabold text-2xl tracking-tight font-['Inter']" style="color: #F5F5F5">
             V2er
           </span>
-          <span class="text-sm text-gray-600 dark:text-gray-400 font-medium tracking-wide">
+          <span class="text-sm text-gray-400 font-medium tracking-wide">
             优雅的 V2EX 客户端
           </span>
         </div>
       </div>
 
       <!-- Navigation Links -->
-      <div class="hidden md:flex items-center gap-4">
+      <div class="hidden md:flex items-center gap-6">
         {navItems.map(item => (
           <a
             href={item.href}
-            class="relative px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-300
+            class="relative px-3 py-1.5 text-sm font-medium text-gray-300 
                    transition-all duration-300 ease-out rounded-lg
-                   hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/10 hover:-translate-y-0.5
-                   active:bg-gray-300 dark:active:bg-white/15 transform"
+                   hover:text-white hover:bg-white/10 hover:-translate-y-0.5
+                   active:bg-white/15 transform"
             target={item.href.startsWith('#') ? '_self' : '_blank'}
           >
             {item.text}
           </a>
         ))}
-
-        <!-- Theme Toggle Button -->
-        <button
-          id="theme-toggle"
-          class="p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white
-                 hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-all hover:-translate-y-0.5
-                 transform"
-          aria-label="切换主题">
-          <i class="fas fa-sun dark:hidden"></i>
-          <i class="fas fa-moon hidden dark:inline"></i>
-        </button>
       </div>
 
-      <!-- Mobile Menu Button & Theme Toggle -->
-      <div class="md:hidden flex items-center gap-2">
-        <button
-          id="theme-toggle-mobile"
-          class="p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white
-                 hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-all hover:-translate-y-0.5
-                 transform"
-          aria-label="切换主题">
-          <i class="fas fa-sun dark:hidden"></i>
-          <i class="fas fa-moon hidden dark:inline"></i>
-        </button>
-        <button class="p-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white
-                       hover:bg-gray-200 dark:hover:bg-white/10 rounded-lg transition-all hover:-translate-y-0.5
-                       transform"
-                id="mobile-menu-button">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden p-2 text-gray-300 hover:text-white 
+                     hover:bg-white/10 rounded-lg transition-all hover:-translate-y-0.5
+                     transform" 
+              id="mobile-menu-button">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
   </div>
 
   <!-- Mobile Menu -->
   <div class="md:hidden hidden" id="mobile-menu">
-    <div class="px-4 py-4 space-y-2 bg-white/95 dark:bg-black/90 border-t border-gray-300 dark:border-white/10 transition-colors">
+    <div class="px-4 py-4 space-y-2 bg-black/90 border-t border-white/10">
       {navItems.map(item => (
         <a
           href={item.href}
-          class="block text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all px-3 py-2
-                 hover:bg-gray-200 dark:hover:bg-white/10 active:bg-gray-300 dark:active:bg-white/15 rounded-lg
+          class="block text-gray-300 hover:text-white transition-all px-3 py-2
+                 hover:bg-white/10 active:bg-white/15 rounded-lg
                  hover:-translate-y-0.5 transform"
           target={item.href.startsWith('#') ? '_self' : '_blank'}
         >
@@ -101,24 +74,6 @@ const navItems = [
 <script>
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-
-  // Theme toggle functionality
-  function toggleTheme() {
-    const isDark = document.documentElement.classList.contains('dark');
-
-    if (isDark) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-  }
-
-  themeToggle?.addEventListener('click', toggleTheme);
-  themeToggleMobile?.addEventListener('click', toggleTheme);
 
   mobileMenuButton?.addEventListener('click', () => {
     mobileMenu?.classList.toggle('hidden');
