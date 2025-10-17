@@ -397,7 +397,6 @@
     // Theme toggle functionality
     const themeToggle = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
-    const favicon = document.getElementById('favicon') as HTMLLinkElement | null;
     const logoIcon = document.querySelector('.logo-icon') as HTMLImageElement | null;
     const html = document.documentElement;
 
@@ -428,15 +427,33 @@
         themeIcon.innerHTML = theme === 'light' ? moonIcon : sunIcon;
       }
 
-      // Update favicon
-      if (favicon) {
-        favicon.href = theme === 'light' ? '/favicon-light.svg' : '/favicon-dark.svg';
-      }
+      // Update favicon with forced refresh for better compatibility
+      updateFavicon(theme === 'light' ? '/favicon-light.svg' : '/favicon-dark.svg');
 
       // Update logo icon
       if (logoIcon) {
         logoIcon.src = theme === 'light' ? '/favicon-light.svg' : '/favicon-dark.svg';
       }
+    }
+
+    // Robust favicon update function that works reliably in Android WebView
+    function updateFavicon(href: string) {
+      // Remove existing favicon links
+      const existingFavicons = document.querySelectorAll('link[rel*="icon"]');
+      existingFavicons.forEach(link => link.remove());
+
+      // Create new favicon link with cache-busting timestamp
+      const newFavicon = document.createElement('link');
+      newFavicon.id = 'favicon';
+      newFavicon.rel = 'icon';
+      newFavicon.type = 'image/svg+xml';
+      // Add timestamp to force refresh and avoid cache issues
+      newFavicon.href = `${href}?v=${Date.now()}`;
+
+      // Use requestAnimationFrame to ensure DOM is ready
+      requestAnimationFrame(() => {
+        document.head.appendChild(newFavicon);
+      });
     }
 
     // Detect system theme preference
