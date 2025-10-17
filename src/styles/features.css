@@ -1,20 +1,13 @@
 .features {
-  @apply py-24 bg-black;
+  @apply py-24 bg-white dark:bg-black;
 }
 
 .container {
   @apply max-w-6xl mx-auto px-4;
 }
 
-.section-title {
-  @apply text-4xl font-bold text-center mb-4;
-  background: linear-gradient(to right, #fff, rgba(255,255,255,0.7));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .section-desc {
-  @apply text-xl text-gray-400 text-center max-w-3xl mx-auto mb-16;
+  @apply text-xl text-gray-600 dark:text-gray-400 text-center max-w-3xl mx-auto mb-16;
 }
 
 .feature-grid {
@@ -22,34 +15,41 @@
 }
 
 .feature-card {
-  @apply p-8 rounded-2xl bg-white/[0.02]
-         border border-zinc-800
+  @apply p-8 rounded-2xl bg-gray-100 dark:bg-white/[0.02]
+         border border-gray-300 dark:border-zinc-800
          transition-all relative
-         hover:bg-zinc-900 hover:border-zinc-700
+         hover:bg-gray-200 dark:hover:bg-zinc-900 hover:border-gray-400 dark:hover:border-zinc-700
          transform hover:-translate-y-1;
          transition: all 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-8px);
+}
+
+.dark .feature-card:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+.feature-card:hover:not(.dark .feature-card) {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
 .feature-icon {
-  @apply w-14 h-14 rounded-xl bg-white/5 border border-white/10 
+  @apply w-14 h-14 rounded-xl bg-gray-200 dark:bg-white/5 border border-gray-300 dark:border-white/10
          flex items-center justify-center mb-6;
 }
 
 .feature-icon i {
-  @apply text-2xl text-white;
+  @apply text-2xl text-gray-800 dark:text-white;
 }
 
 .feature-card h3 {
-  @apply text-xl font-semibold mb-4;
+  @apply text-xl font-semibold mb-4 text-gray-900 dark:text-white;
 }
 
 .feature-card p {
-  @apply text-gray-400 leading-relaxed;
+  @apply text-gray-600 dark:text-gray-400 leading-relaxed;
 }
 
 .github-link {
@@ -57,7 +57,7 @@
 }
 
 .github-link a {
-  @apply text-gray-300 hover:text-white;
+  @apply text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white;
 }
 
 @media (max-width: 768px) {

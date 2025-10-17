@@ -1,5 +1,14 @@
 :root {
   --accent: 51, 51, 67;
+  /* Light mode colors */
+  --text-primary: 0, 0, 0;
+  --text-secondary: 102, 102, 102;
+  --bg-primary: 255, 255, 255;
+  --bg-secondary: 249, 249, 249;
+}
+
+.dark {
+  /* Dark mode colors */
   --text-primary: 255, 255, 255;
   --text-secondary: 153, 153, 153;
   --bg-primary: 0, 0, 0;
@@ -14,6 +23,12 @@
 
 .section-title {
   @apply text-4xl font-bold text-center mb-4;
+  background: linear-gradient(to right, #000, rgba(0,0,0,0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .section-title {
   background: linear-gradient(to right, #fff, rgba(255,255,255,0.7));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -30,9 +45,14 @@ html {
 
 /* Update the FAQ card styles */
 .faq-card {
-  @apply p-8 rounded-2xl bg-white/[0.02]
-         border border-zinc-800
+  @apply p-8 rounded-2xl bg-gray-100
+         border border-gray-300
          transition-all relative
-         hover:bg-zinc-900 hover:border-zinc-700
+         hover:bg-gray-200 hover:border-gray-400
          transform hover:-translate-y-1;
+}
+
+.dark .faq-card {
+  @apply bg-white/[0.02] border-zinc-800
+         hover:bg-zinc-900 hover:border-zinc-700;
 } 
