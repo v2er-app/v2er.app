@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="问题反馈 - V2er">
+  <!-- 简化的导航栏 -->
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-black/50">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-24">
+        <a href="/" class="flex items-center gap-4 hover:opacity-80 transition-opacity">
+          <img
+            src="/favicon-dark.svg"
+            alt="V2er Logo"
+            class="h-12 w-12"
+          >
+          <div class="flex flex-col">
+            <span class="font-extrabold text-2xl tracking-tight font-['Inter']" style="color: #F5F5F5">
+              V2er
+            </span>
+            <span class="text-sm text-gray-400 font-medium tracking-wide">
+              优雅的 V2EX 客户端
+            </span>
+          </div>
+        </a>
+
+        <a
+          href="/"
+          class="px-4 py-2 text-sm font-medium text-gray-300
+                 transition-all duration-300 ease-out rounded-lg
+                 hover:text-white hover:bg-white/10"
+        >
+          <i class="fas fa-arrow-left mr-2"></i>
+          返回首页
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="min-h-screen flex flex-col items-center justify-center pt-24 pb-16 px-4">
+    <!-- 背景渐变 -->
+    <div class="fixed inset-0 bg-gradient-to-b from-purple-500/10 via-transparent to-transparent pointer-events-none"></div>
+
+    <div class="relative z-10 w-full max-w-4xl mx-auto">
+      <!-- 标题区域 -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
+            问题反馈
+          </span>
+        </h1>
+        <p class="text-lg text-gray-400 max-w-xl mx-auto leading-relaxed">
+          GitHub Issues 是我们唯一的问题反馈渠道。<br class="hidden sm:inline">
+          请根据您使用的平台选择对应的入口提交问题。
+        </p>
+      </div>
+
+      <!-- 平台卡片 -->
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <!-- Android 卡片 -->
+        <a
+          href="https://github.com/v2er-app/Android/issues/new"
+          target="_blank"
+          rel="noopener"
+          class="group p-8 rounded-2xl bg-white/[0.03] border border-zinc-800
+                 transition-all duration-300 hover:bg-white/[0.06]
+                 hover:border-zinc-600 hover:-translate-y-1"
+        >
+          <div class="flex flex-col items-center text-center">
+            <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/20
+                        flex items-center justify-center mb-6
+                        group-hover:from-green-500/30 group-hover:to-green-600/30 transition-all">
+              <i class="fab fa-android text-4xl text-green-400"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-3">Android</h2>
+            <p class="text-gray-400 mb-6">
+              提交 Android 版本相关的问题或建议
+            </p>
+            <span class="inline-flex items-center gap-2 px-6 py-3 rounded-xl
+                         bg-green-500/10 text-green-400 font-medium
+                         group-hover:bg-green-500/20 transition-all">
+              <i class="fab fa-github"></i>
+              提交 Issue
+              <i class="fas fa-arrow-right text-sm opacity-0 -translate-x-2
+                        group-hover:opacity-100 group-hover:translate-x-0 transition-all"></i>
+            </span>
+          </div>
+        </a>
+
+        <!-- iOS 卡片 -->
+        <a
+          href="https://github.com/v2er-app/iOS/issues/new"
+          target="_blank"
+          rel="noopener"
+          class="group p-8 rounded-2xl bg-white/[0.03] border border-zinc-800
+                 transition-all duration-300 hover:bg-white/[0.06]
+                 hover:border-zinc-600 hover:-translate-y-1"
+        >
+          <div class="flex flex-col items-center text-center">
+            <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-600/20
+                        flex items-center justify-center mb-6
+                        group-hover:from-blue-500/30 group-hover:to-purple-600/30 transition-all">
+              <i class="fab fa-apple text-4xl text-white"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-3">iOS</h2>
+            <p class="text-gray-400 mb-6">
+              提交 iOS 版本相关的问题或建议
+            </p>
+            <span class="inline-flex items-center gap-2 px-6 py-3 rounded-xl
+                         bg-blue-500/10 text-blue-400 font-medium
+                         group-hover:bg-blue-500/20 transition-all">
+              <i class="fab fa-github"></i>
+              提交 Issue
+              <i class="fas fa-arrow-right text-sm opacity-0 -translate-x-2
+                        group-hover:opacity-100 group-hover:translate-x-0 transition-all"></i>
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- 提示信息 -->
+      <div class="p-6 rounded-xl bg-white/[0.02] border border-zinc-800/50">
+        <h3 class="text-sm font-semibold text-gray-300 mb-3 flex items-center gap-2">
+          <i class="fas fa-lightbulb text-yellow-500"></i>
+          提交高质量 Issue 的建议
+        </h3>
+        <ul class="text-sm text-gray-500 space-y-2">
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check text-green-500/70 mt-1 text-xs"></i>
+            <span>描述问题时请包含具体的操作步骤</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check text-green-500/70 mt-1 text-xs"></i>
+            <span>提供您的设备型号和系统版本</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check text-green-500/70 mt-1 text-xs"></i>
+            <span>如有可能，请附上截图或录屏</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <i class="fas fa-check text-green-500/70 mt-1 text-xs"></i>
+            <span>提交前请先搜索是否已有相同问题</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
