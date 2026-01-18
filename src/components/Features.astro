@@ -1,24 +1,27 @@
 ---
-import '../styles/features.css';
-
 const features = [
   {
-    icon: 'fa-rocket',
+    number: '01',
+    icon: 'fa-bolt',
     title: '原生性能',
-    description: '基于原生技术开发，启动快速，响应灵敏，内存占用低，让浏览更加流畅自然。'
+    description: '基于原生技术开发，启动快速，响应灵敏，内存占用低，让浏览更加流畅自然。',
+    highlight: true
   },
   {
-    icon: 'fa-wand-magic-sparkles',
+    number: '02',
+    icon: 'fa-palette',
     title: '精致设计',
     description: '遵循平台设计规范，完美适配系统特性，提供一致且优雅的视觉体验。'
   },
   {
-    icon: 'fa-cubes',
+    number: '03',
+    icon: 'fa-layer-group',
     title: '功能丰富',
     description: '支持节点导航、帖子浏览、评论互动、消息通知、主题切换等全面功能。'
   },
   {
-    icon: 'fa-code-fork',
+    number: '04',
+    icon: 'fa-code-branch',
     title: '开源免费',
     description: '代码完全开源，无广告无内购，持续维护更新，欢迎社区贡献。'
   }
@@ -27,32 +30,238 @@ const features = [
 
 <section class="features" id="features">
   <div class="container">
-    <h2 class="section-title">功能特性</h2>
-    <p class="section-desc">
-      专为 V2EX 社区打造的原生客户端，提供流畅的浏览体验和丰富的功能特性。
-    </p>
+    <div class="features-header">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">为什么选择 V2er</h2>
+      <p class="section-desc">
+        专为 V2EX 社区打造的原生客户端，提供流畅的浏览体验和丰富的功能特性。
+      </p>
+    </div>
 
-    <div class="feature-grid">
-      {features.map(feature => (
-        <div class="feature-card">
+    <div class="features-grid">
+      {features.map((feature) => (
+        <div class={`feature-card ${feature.highlight ? 'feature-card--highlight' : ''}`}>
+          <div class="feature-number">{feature.number}</div>
           <div class="feature-icon">
             <i class={`fas ${feature.icon}`}></i>
           </div>
-          <h3>{feature.title}</h3>
-          <p>{feature.description}</p>
+          <h3 class="feature-title">{feature.title}</h3>
+          <p class="feature-desc">{feature.description}</p>
+          <div class="feature-line"></div>
         </div>
       ))}
     </div>
 
-    <div class="github-link">
-      <a 
-        href="https://github.com/v2er-app" 
+    <div class="features-cta">
+      <a
+        href="https://github.com/v2er-app"
         target="_blank"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/5 hover:bg-white/10 transition-all"
+        rel="noopener"
+        class="github-link"
       >
         <i class="fab fa-github"></i>
-        在 GitHub 上查看源码
+        <span>在 GitHub 上查看源码</span>
+        <i class="fas fa-arrow-right"></i>
       </a>
     </div>
   </div>
-</section> 
+</section>
+
+<style>
+  .features {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .features::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--border-primary) 20%,
+      var(--border-primary) 80%,
+      transparent
+    );
+  }
+
+  .features-header {
+    max-width: 600px;
+    margin-bottom: var(--space-12);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (max-width: 768px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+
+  .feature-card {
+    position: relative;
+    padding: var(--space-8);
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 1.25rem;
+    transition: all 0.4s var(--ease-out-expo);
+    overflow: hidden;
+  }
+
+  .feature-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-secondary);
+    transform: translateY(-4px);
+  }
+
+  .feature-card--highlight {
+    background: linear-gradient(
+      135deg,
+      var(--amber-bg) 0%,
+      transparent 100%
+    );
+    border-color: var(--amber-border);
+  }
+
+  .feature-card--highlight:hover {
+    border-color: var(--amber);
+    background: linear-gradient(
+      135deg,
+      var(--amber-bg) 0%,
+      transparent 100%
+    );
+  }
+
+  .feature-number {
+    position: absolute;
+    top: var(--space-6);
+    right: var(--space-6);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    background: var(--amber-bg);
+    border-radius: 0.875rem;
+    margin-bottom: var(--space-5);
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .feature-card:hover .feature-icon {
+    transform: scale(1.05);
+    background: var(--amber-bg);
+  }
+
+  .feature-icon i {
+    font-size: 1.25rem;
+    color: var(--amber);
+  }
+
+  .feature-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+    letter-spacing: -0.01em;
+  }
+
+  .feature-desc {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  .feature-line {
+    position: absolute;
+    bottom: 0;
+    left: var(--space-8);
+    right: var(--space-8);
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--border-primary) 30%,
+      var(--border-primary) 70%,
+      transparent
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .feature-card:hover .feature-line {
+    opacity: 1;
+  }
+
+  /* CTA */
+  .features-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  .github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .github-link:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-secondary);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  .github-link i:first-child {
+    font-size: 1.25rem;
+  }
+
+  .github-link i:last-child {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+  }
+
+  .github-link:hover i:last-child {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 640px) {
+    .feature-card {
+      padding: var(--space-6);
+    }
+
+    .feature-number {
+      top: var(--space-4);
+      right: var(--space-4);
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+    }
+  }
+</style>
