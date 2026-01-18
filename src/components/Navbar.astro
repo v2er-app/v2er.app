@@ -1,93 +1,456 @@
 ---
 const navItems = [
-  { href: '/help', text: '问题反馈' },
-  { href: '#features', text: '功能特性' },
-  { href: '#faq', text: '常见问题' },
-  { href: '#reviews', text: '用户评价' },
-  { href: '#products', text: '其他产品' }
+  { href: '/help', text: '问题反馈', external: true },
+  { href: '#features', text: '功能' },
+  { href: '#faq', text: '问答' },
+  { href: '#reviews', text: '评价' },
+  { href: '#products', text: '产品' }
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-black/50">
-  <div class="container mx-auto px-4">
-    <div class="flex items-center justify-between h-24">
-      <!-- Logo Section -->
-      <div class="flex items-center gap-4">
-        <img
-          src="/favicon-dark.svg"
-          alt="V2er Logo"
-          class="h-12 w-12 group-hover:scale-110 transition-transform"
-        >
-        <div class="flex flex-col">
-          <span class="font-extrabold text-2xl tracking-tight font-['Inter']" style="color: #F5F5F5">
-            V2er
-          </span>
-          <span class="text-sm text-gray-400 font-medium tracking-wide">
-            优雅的 V2EX 客户端
-          </span>
-        </div>
+<nav class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <!-- Logo -->
+    <a href="/" class="navbar-brand">
+      <img
+        src="/favicon-dark.svg"
+        alt="V2er Logo"
+        class="brand-icon brand-icon-dark"
+      >
+      <img
+        src="/favicon-light.svg"
+        alt="V2er Logo"
+        class="brand-icon brand-icon-light"
+      >
+      <div class="brand-text">
+        <span class="brand-name">V2er</span>
+        <span class="brand-tagline">for V2EX</span>
       </div>
+    </a>
 
-      <!-- Navigation Links -->
-      <div class="hidden md:flex items-center gap-6">
-        {navItems.map(item => (
-          <a
-            href={item.href}
-            class="relative px-3 py-1.5 text-sm font-medium text-gray-300 
-                   transition-all duration-300 ease-out rounded-lg
-                   hover:text-white hover:bg-white/10 hover:-translate-y-0.5
-                   active:bg-white/15 transform"
-            target={item.href.startsWith('#') ? '_self' : '_blank'}
-          >
-            {item.text}
-          </a>
-        ))}
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button class="md:hidden p-2 text-gray-300 hover:text-white 
-                     hover:bg-white/10 rounded-lg transition-all hover:-translate-y-0.5
-                     transform" 
-              id="mobile-menu-button">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div class="md:hidden hidden" id="mobile-menu">
-    <div class="px-4 py-4 space-y-2 bg-black/90 border-t border-white/10">
+    <!-- Desktop Nav -->
+    <div class="navbar-links">
       {navItems.map(item => (
         <a
           href={item.href}
-          class="block text-gray-300 hover:text-white transition-all px-3 py-2
-                 hover:bg-white/10 active:bg-white/15 rounded-lg
-                 hover:-translate-y-0.5 transform"
-          target={item.href.startsWith('#') ? '_self' : '_blank'}
+          class="nav-link"
+          target={item.external ? '_blank' : '_self'}
         >
           {item.text}
         </a>
       ))}
     </div>
+
+    <!-- Right Actions -->
+    <div class="navbar-actions">
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+
+      <!-- CTA Button -->
+      <a
+        href="https://apps.apple.com/app/id1596137027"
+        target="_blank"
+        rel="noopener"
+        class="cta-button"
+      >
+        <span>下载</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-toggle" id="mobile-menu-button" aria-label="Toggle menu">
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-inner">
+      {navItems.map(item => (
+        <a
+          href={item.href}
+          class="mobile-link"
+          target={item.external ? '_blank' : '_self'}
+        >
+          {item.text}
+        </a>
+      ))}
+      <div class="mobile-divider"></div>
+      <a
+        href="https://apps.apple.com/app/id1596137027"
+        target="_blank"
+        rel="noopener"
+        class="mobile-cta"
+      >
+        <i class="fab fa-apple"></i>
+        App Store
+      </a>
+      <a
+        href="https://play.google.com/store/apps/details?id=me.ghui.v2er"
+        target="_blank"
+        rel="noopener"
+        class="mobile-cta mobile-cta-secondary"
+      >
+        <i class="fab fa-google-play"></i>
+        Google Play
+      </a>
+    </div>
   </div>
 </nav>
 
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .navbar.scrolled {
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .navbar-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-6);
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Brand */
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    text-decoration: none;
+  }
+
+  .brand-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    transition: transform 0.3s var(--ease-out-quart);
+  }
+
+  /* Show appropriate logo based on theme */
+  .brand-icon-light {
+    display: none;
+  }
+
+  .brand-icon-dark {
+    display: block;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) .brand-icon-light {
+      display: block;
+    }
+    :root:not([data-theme="dark"]) .brand-icon-dark {
+      display: none;
+    }
+  }
+
+  [data-theme="light"] .brand-icon-light {
+    display: block;
+  }
+
+  [data-theme="light"] .brand-icon-dark {
+    display: none;
+  }
+
+  [data-theme="dark"] .brand-icon-light {
+    display: none;
+  }
+
+  [data-theme="dark"] .brand-icon-dark {
+    display: block;
+  }
+
+  .navbar-brand:hover .brand-icon {
+    transform: scale(1.05);
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .brand-tagline {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--text-tertiary);
+    letter-spacing: 0.05em;
+  }
+
+  /* Links */
+  .navbar-links {
+    display: none;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  @media (min-width: 900px) {
+    .navbar-links {
+      display: flex;
+    }
+  }
+
+  .nav-link {
+    padding: var(--space-2) var(--space-4);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: 0.5rem;
+    transition: all 0.2s var(--ease-out-quart);
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+    background: var(--bg-card);
+  }
+
+  /* Actions */
+  .navbar-actions {
+    display: none;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  @media (min-width: 900px) {
+    .navbar-actions {
+      display: flex;
+    }
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--amber);
+    color: #0a0a0a;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .cta-button:hover {
+    background: var(--amber-glow);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(232, 168, 56, 0.3);
+  }
+
+  .cta-button i {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+  }
+
+  .cta-button:hover i {
+    transform: translateX(2px);
+  }
+
+  /* Mobile Toggle */
+  .mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  @media (min-width: 900px) {
+    .mobile-toggle {
+      display: none;
+    }
+  }
+
+  .toggle-bar {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 1px;
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .mobile-toggle.active .toggle-bar:first-child {
+    transform: rotate(45deg) translateY(3.5px);
+  }
+
+  .mobile-toggle.active .toggle-bar:last-child {
+    transform: rotate(-45deg) translateY(-3.5px);
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-primary);
+    padding: var(--space-4) var(--space-6) var(--space-6);
+  }
+
+  .mobile-menu.open {
+    display: block;
+    animation: slideDown 0.3s var(--ease-out-quart);
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mobile-menu-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .mobile-link {
+    padding: var(--space-3) var(--space-4);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-link:hover {
+    color: var(--text-primary);
+    background: var(--bg-card);
+  }
+
+  .mobile-divider {
+    height: 1px;
+    background: var(--border-primary);
+    margin: var(--space-3) 0;
+  }
+
+  .mobile-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--amber);
+    color: #0a0a0a;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-cta:hover {
+    background: var(--amber-glow);
+  }
+
+  .mobile-cta-secondary {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-secondary);
+  }
+
+  .mobile-cta-secondary:hover {
+    background: var(--bg-card-hover);
+  }
+
+  @media (min-width: 900px) {
+    .mobile-menu {
+      display: none !important;
+    }
+  }
+</style>
+
 <script>
+  const navbar = document.getElementById('navbar');
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
+  const themeToggle = document.getElementById('theme-toggle');
 
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
+  // Scroll behavior
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
   });
 
-  // 点击导航链接后关闭菜单
+  // Mobile menu toggle
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenuButton.classList.toggle('active');
+    mobileMenu?.classList.toggle('open');
+  });
+
+  // Close menu on link click
   document.querySelectorAll('#mobile-menu a').forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
+      mobileMenuButton?.classList.remove('active');
+      mobileMenu?.classList.remove('open');
     });
   });
 
-  // 平滑滚动
+  // Theme toggle
+  function getThemePreference(): string {
+    const stored = localStorage.getItem('theme');
+    if (stored) return stored;
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  }
+
+  function setTheme(theme: string) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }
+
+  // Initialize theme
+  const initialTheme = getThemePreference();
+  setTheme(initialTheme);
+
+  themeToggle?.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || getThemePreference();
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+  });
+
+  // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor: Element) => {
     anchor.addEventListener('click', function(this: HTMLAnchorElement, e: Event) {
       e.preventDefault();
@@ -99,4 +462,4 @@ const navItems = [
       }
     });
   });
-</script> 
+</script>

@@ -1,29 +1,27 @@
 ---
-import '../styles/reviews.css';
-
 const reviews = [
   {
     content: '非常好用的 V2EX 客户端，界面简洁美观，功能齐全，最重要的是开源，值得信赖。',
     author: 'Yifan Wang',
-    date: '2024-01-15',
+    platform: 'google',
     rating: 5
   },
   {
     content: '体验非常好，原生的性能体验，比网页版流畅很多，开发者很用心在维护，希望能一直更新下去。',
     author: 'Alex Chen',
-    date: '2024-01-02',
+    platform: 'apple',
     rating: 5
   },
   {
     content: '终于找到一个好用的 V2EX 客户端了，界面设计很精致，暗色模式也很舒服，赞！',
     author: 'Leo Zhang',
-    date: '2023-12-28',
+    platform: 'google',
     rating: 5
   },
   {
     content: '功能完整，界面清爽，完全满足日常使用需求。支持开源项目，给开发者点赞！',
     author: 'David Lin',
-    date: '2023-12-20',
+    platform: 'apple',
     rating: 5
   }
 ];
@@ -31,16 +29,19 @@ const reviews = [
 
 <section class="reviews" id="reviews">
   <div class="container">
-    <h2 class="section-title">用户评价</h2>
-    <p class="section-desc">
-      来自 Google Play 和 App Store 的真实用户反馈
-    </p>
+    <div class="reviews-header">
+      <div class="section-label">Reviews</div>
+      <h2 class="section-title">用户评价</h2>
+      <p class="section-desc">
+        来自 Google Play 和 App Store 的真实用户反馈
+      </p>
+    </div>
 
     <div class="reviews-grid">
       {reviews.map((review) => (
         <div class="review-card">
-          <div class="quote-mark">"</div>
-          <div class="rating">
+          <div class="review-quote">"</div>
+          <div class="review-rating">
             {Array.from({ length: review.rating }).map(() => (
               <i class="fas fa-star"></i>
             ))}
@@ -48,26 +49,214 @@ const reviews = [
           <p class="review-content">{review.content}</p>
           <div class="review-footer">
             <div class="review-author">
-              <p class="author-name">{review.author}</p>
-              <p class="review-date">{review.date}</p>
+              <div class="author-avatar">
+                {review.author.charAt(0)}
+              </div>
+              <span class="author-name">{review.author}</span>
             </div>
-            <div class="store-icon">
-              <i class="fab fa-google-play"></i>
+            <div class="review-platform">
+              <i class={`fab fa-${review.platform === 'apple' ? 'apple' : 'google-play'}`}></i>
             </div>
           </div>
         </div>
       ))}
     </div>
 
-    <div class="store-links">
-      <a href="https://play.google.com/store/apps/details?id=me.ghui.v2er" target="_blank">
-        <i class="fab fa-google-play"></i>
-        Google Play
-      </a>
-      <a href="https://apps.apple.com/app/id1596137027" target="_blank">
+    <div class="reviews-cta">
+      <a
+        href="https://apps.apple.com/app/id1596137027"
+        target="_blank"
+        rel="noopener"
+        class="store-link"
+      >
         <i class="fab fa-apple"></i>
-        App Store
+        <span>App Store</span>
+      </a>
+      <a
+        href="https://play.google.com/store/apps/details?id=me.ghui.v2er"
+        target="_blank"
+        rel="noopener"
+        class="store-link"
+      >
+        <i class="fab fa-google-play"></i>
+        <span>Google Play</span>
       </a>
     </div>
   </div>
-</section> 
+</section>
+
+<style>
+  .reviews {
+    position: relative;
+  }
+
+  .reviews::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--border-primary) 20%,
+      var(--border-primary) 80%,
+      transparent
+    );
+  }
+
+  .reviews-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-12);
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+  }
+
+  @media (max-width: 768px) {
+    .reviews-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+  }
+
+  .review-card {
+    position: relative;
+    padding: var(--space-8);
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 1.25rem;
+    transition: all 0.4s var(--ease-out-expo);
+  }
+
+  .review-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-secondary);
+    transform: translateY(-4px);
+  }
+
+  .review-quote {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-6);
+    font-family: var(--font-display);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--border-primary);
+    pointer-events: none;
+  }
+
+  .review-rating {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .review-rating i {
+    font-size: 0.75rem;
+    color: var(--amber);
+  }
+
+  .review-content {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+    position: relative;
+    z-index: 1;
+  }
+
+  .review-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .author-avatar {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--amber) 0%, var(--amber-deep) 100%);
+    border-radius: 50%;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0a0a0a;
+  }
+
+  .author-name {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .review-platform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background: var(--bg-card-hover);
+    border-radius: 0.5rem;
+    color: var(--text-tertiary);
+    font-size: 1rem;
+  }
+
+  /* CTA */
+  .reviews-cta {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .store-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .store-link:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-secondary);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  .store-link i {
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .review-card {
+      padding: var(--space-6);
+    }
+
+    .review-quote {
+      font-size: 3rem;
+      top: var(--space-3);
+      right: var(--space-4);
+    }
+  }
+</style>

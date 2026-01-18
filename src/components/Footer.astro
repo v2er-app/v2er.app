@@ -1,37 +1,210 @@
 ---
 const currentYear = new Date().getFullYear();
+
+const links = [
+  { href: '/help', text: '问题反馈', external: false },
+  { href: 'https://github.com/v2er-app', text: 'GitHub', icon: 'fa-github', external: true },
+  { href: 'https://t.me/v2er_app', text: 'Telegram', icon: 'fa-telegram', external: true }
+];
 ---
 
-<footer class="py-8 mt-16 border-t border-white/10">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="flex items-center gap-2">
-        <img src="/favicon-dark.svg" alt="V2er Logo" class="h-8 w-8">
-        <span class="text-gray-400">© {currentYear} V2er. All rights reserved.</span>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="/" class="brand-link">
+          <img src="/favicon-dark.svg" alt="V2er Logo" class="brand-logo brand-logo-dark">
+          <img src="/favicon-light.svg" alt="V2er Logo" class="brand-logo brand-logo-light">
+          <span class="brand-name">V2er</span>
+        </a>
+        <p class="brand-tagline">优雅的 V2EX 客户端</p>
       </div>
-      
-      <div class="flex items-center gap-6">
-        <a
-          href="/help"
-          class="text-gray-400 hover:text-white transition-colors text-sm"
-        >
-          问题反馈
-        </a>
-        <a
-          href="https://github.com/v2er-app"
-          target="_blank"
-          class="text-gray-400 hover:text-white transition-colors"
-        >
-          <i class="fab fa-github text-xl"></i>
-        </a>
-        <a
-          href="https://t.me/v2er_app"
-          target="_blank"
-          class="text-gray-400 hover:text-white transition-colors"
-        >
-          <i class="fab fa-telegram text-xl"></i>
-        </a>
+
+      <!-- Links -->
+      <div class="footer-links">
+        {links.map(link => (
+          <a
+            href={link.href}
+            class="footer-link"
+            target={link.external ? '_blank' : '_self'}
+            rel={link.external ? 'noopener' : undefined}
+          >
+            {link.icon && <i class={`fab ${link.icon}`}></i>}
+            <span>{link.text}</span>
+          </a>
+        ))}
       </div>
     </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">
+        <span class="copyright-symbol">©</span>
+        <span>{currentYear} V2er</span>
+        <span class="separator">·</span>
+        <span>Made with care</span>
+      </p>
+    </div>
   </div>
-</footer> 
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    padding: var(--space-12) 0 var(--space-8);
+    margin-top: var(--space-16);
+  }
+
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--border-primary) 20%,
+      var(--border-primary) 80%,
+      transparent
+    );
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-10);
+  }
+
+  @media (max-width: 640px) {
+    .footer-content {
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+  }
+
+  /* Brand */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    transition: opacity 0.2s ease;
+  }
+
+  .brand-link:hover {
+    opacity: 0.8;
+  }
+
+  .brand-logo {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* Show appropriate logo based on theme */
+  .brand-logo-light {
+    display: none;
+  }
+
+  .brand-logo-dark {
+    display: block;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) .brand-logo-light {
+      display: block;
+    }
+    :root:not([data-theme="dark"]) .brand-logo-dark {
+      display: none;
+    }
+  }
+
+  [data-theme="light"] .brand-logo-light {
+    display: block;
+  }
+
+  [data-theme="light"] .brand-logo-dark {
+    display: none;
+  }
+
+  [data-theme="dark"] .brand-logo-light {
+    display: none;
+  }
+
+  [data-theme="dark"] .brand-logo-dark {
+    display: block;
+  }
+
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .brand-tagline {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    padding-left: calc(2rem + var(--space-3));
+  }
+
+  /* Links */
+  .footer-links {
+    display: flex;
+    gap: var(--space-6);
+  }
+
+  @media (max-width: 640px) {
+    .footer-links {
+      gap: var(--space-4);
+    }
+  }
+
+  .footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+  }
+
+  .footer-link:hover {
+    color: var(--text-primary);
+  }
+
+  .footer-link i {
+    font-size: 1rem;
+  }
+
+  /* Bottom */
+  .footer-bottom {
+    display: flex;
+    justify-content: center;
+  }
+
+  .copyright {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .copyright-symbol {
+    opacity: 0.5;
+  }
+
+  .separator {
+    opacity: 0.3;
+  }
+</style>

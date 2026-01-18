@@ -1,58 +1,257 @@
 ---
-import '../styles/faq.css';
-
 const faqs = [
   {
     question: 'V2er 是什么？',
-    answer: 'V2er 是一个诞生于 2017 年的第三方 V2EX 客户端，与 V2EX 社区无其它关系。'
+    answer: 'V2er 是一个诞生于 2017 年的第三方 V2EX 客户端，与 V2EX 社区无其它关系。由独立开发者维护，追求简洁优雅的阅读体验。'
   },
   {
-    question: '为什么开发 V2er?',
+    question: '为什么开发 V2er？',
     answer: '由于 V2EX 社区未提供官方 APP，且市面上难以找到一款满意的第三方客户端，因此开发了这款应用。'
   },
   {
     question: '为什么无法回复或发帖？',
-    answer: '可能的原因包括：新注册用户暂无权限、邮箱未验证、账户被限制、IP 被封、金币不足等。'
+    answer: '可能的原因包括：新注册用户暂无权限、邮箱未验证、账户被限制、IP 被封、金币不足等。这些限制来自 V2EX 社区本身。'
   },
   {
-    question: 'APP 网络经常加载失败?',
+    question: 'APP 网络经常加载失败？',
     answer: 'V2EX 社区经常会出现 302、DNS 等网络错误，这种错误不是 V2er 本身可以解决的，建议换个时间再试。'
   },
   {
     question: '是否支持 iOS？',
-    answer: '目前已经支持 iOS，可以在 App Store 下载使用。'
+    answer: '目前已经支持 iOS，可以在 App Store 下载使用。iOS 版本与 Android 版本保持功能一致。'
   },
   {
     question: 'V2er 代码开源吗？',
-    answer: 'V2er 是开源项目，代码已在 GitHub 上公开，欢迎社区贡献。'
+    answer: 'V2er 是开源项目，代码已在 GitHub 上公开，欢迎社区贡献。您可以查看、学习或参与改进代码。'
   }
 ];
 ---
 
 <section class="faq" id="faq">
   <div class="container">
-    <h2 class="section-title">常见问题</h2>
-    <p class="section-desc">
-      这里整理了用户最常遇到的一些问题和解答，如果没有找到你想要的答案，欢迎在 GitHub 上提出问题。
-    </p>
-    
-    <div class="faq-grid">
-      {faqs.map((faq, index) => (
-        <div class="faq-card">
-          <div class="faq-header">
-            <h3>{faq.question}</h3>
-            <span class="faq-number">0{index + 1}</span>
-          </div>
-          <p>{faq.answer}</p>
-        </div>
-      ))}
-    </div>
+    <div class="faq-layout">
+      <!-- Left: Header -->
+      <div class="faq-header">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">常见问题</h2>
+        <p class="section-desc">
+          这里整理了用户最常遇到的一些问题和解答，如果没有找到你想要的答案，欢迎在 GitHub 上提出。
+        </p>
+        <a
+          href="https://github.com/v2er-app/Android/issues"
+          target="_blank"
+          rel="noopener"
+          class="faq-link"
+        >
+          <i class="fab fa-github"></i>
+          <span>提交问题</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
 
-    <div class="github-link">
-      <a href="https://github.com/v2er-app/Android/issues" target="_blank">
-        <i class="fab fa-github"></i>
-        在 GitHub 上提出问题
-      </a>
+      <!-- Right: Questions -->
+      <div class="faq-list">
+        {faqs.map((faq, index) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span class="faq-index">{String(index + 1).padStart(2, '0')}</span>
+              <span class="faq-text">{faq.question}</span>
+              <span class="faq-icon">
+                <i class="fas fa-plus"></i>
+              </span>
+            </summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
     </div>
   </div>
-</section> 
+</section>
+
+<style>
+  .faq {
+    position: relative;
+  }
+
+  .faq::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--border-primary) 20%,
+      var(--border-primary) 80%,
+      transparent
+    );
+  }
+
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .faq-layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+  }
+
+  /* Header */
+  .faq-header {
+    position: sticky;
+    top: 8rem;
+  }
+
+  @media (max-width: 900px) {
+    .faq-header {
+      position: static;
+    }
+  }
+
+  .faq-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+    padding: var(--space-3) var(--space-5);
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .faq-link:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-secondary);
+    color: var(--text-primary);
+  }
+
+  .faq-link i:last-child {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-link:hover i:last-child {
+    transform: translateX(3px);
+  }
+
+  /* FAQ List */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border-primary);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--border-primary);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-5) 0;
+    cursor: pointer;
+    list-style: none;
+    transition: all 0.2s ease;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question:hover {
+    color: var(--amber);
+  }
+
+  .faq-index {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    min-width: 1.5rem;
+  }
+
+  .faq-text {
+    flex: 1;
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: color 0.2s ease;
+  }
+
+  .faq-question:hover .faq-text {
+    color: var(--amber);
+  }
+
+  .faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--text-tertiary);
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .faq-icon i {
+    font-size: 0.75rem;
+    transition: transform 0.3s var(--ease-out-quart);
+  }
+
+  .faq-item[open] .faq-icon i {
+    transform: rotate(45deg);
+  }
+
+  .faq-item[open] .faq-icon {
+    color: var(--amber);
+  }
+
+  .faq-answer {
+    padding: 0 0 var(--space-5) calc(1.5rem + var(--space-4));
+    animation: fadeIn 0.3s var(--ease-out-quart);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .faq-answer p {
+    font-size: 0.9375rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 540px;
+  }
+
+  @media (max-width: 640px) {
+    .faq-text {
+      font-size: 1rem;
+    }
+
+    .faq-answer {
+      padding-left: 0;
+    }
+  }
+</style>
