@@ -109,14 +109,14 @@ const reviews = [
   .reviews-header {
     text-align: center;
     max-width: 600px;
-    margin: 0 auto var(--space-12);
+    margin: 0 auto var(--space-8);
   }
 
   .reviews-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
-    margin-bottom: var(--space-12);
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
   }
 
   @media (max-width: 768px) {
@@ -128,10 +128,10 @@ const reviews = [
 
   .review-card {
     position: relative;
-    padding: var(--space-8);
+    padding: var(--space-5);
     background: var(--bg-card);
     border: 1px solid var(--border-primary);
-    border-radius: 1.25rem;
+    border-radius: 1rem;
     transition: all 0.4s var(--ease-out-expo);
   }
 
@@ -143,10 +143,10 @@ const reviews = [
 
   .review-quote {
     position: absolute;
-    top: var(--space-4);
-    right: var(--space-6);
+    top: var(--space-3);
+    right: var(--space-4);
     font-family: var(--font-display);
-    font-size: 4rem;
+    font-size: 3rem;
     line-height: 1;
     color: var(--border-primary);
     pointer-events: none;
@@ -155,7 +155,7 @@ const reviews = [
   .review-rating {
     display: flex;
     gap: 0.25rem;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-3);
   }
 
   .review-rating i {
@@ -164,10 +164,10 @@ const reviews = [
   }
 
   .review-content {
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 0.9375rem;
+    line-height: 1.7;
     color: var(--text-secondary);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);
     position: relative;
     z-index: 1;
   }
@@ -185,20 +185,20 @@ const reviews = [
   }
 
   .author-avatar {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 2rem;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, var(--amber) 0%, var(--amber-deep) 100%);
     border-radius: 50%;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     font-weight: 600;
     color: #0a0a0a;
   }
 
   .author-name {
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 500;
     color: var(--text-primary);
   }
@@ -226,13 +226,13 @@ const reviews = [
   .store-link {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-6);
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
     background: var(--bg-card);
     border: 1px solid var(--border-primary);
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
     color: var(--text-secondary);
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.3s var(--ease-out-quart);
   }
@@ -250,13 +250,13 @@ const reviews = [
 
   @media (max-width: 640px) {
     .review-card {
-      padding: var(--space-6);
+      padding: var(--space-4);
     }
 
     .review-quote {
-      font-size: 3rem;
-      top: var(--space-3);
-      right: var(--space-4);
+      font-size: 2.5rem;
+      top: var(--space-2);
+      right: var(--space-3);
     }
   }
 </style>

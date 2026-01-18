@@ -86,7 +86,7 @@ const products = [
   .products-header {
     text-align: center;
     max-width: 600px;
-    margin: 0 auto var(--space-12);
+    margin: 0 auto var(--space-8);
   }
 
   .products-grid {
@@ -102,10 +102,10 @@ const products = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-6);
+    padding: var(--space-5);
     background: var(--bg-card);
     border: 1px solid var(--border-primary);
-    border-radius: 1rem;
+    border-radius: 0.875rem;
     transition: all 0.4s var(--ease-out-expo);
     overflow: hidden;
   }
@@ -140,15 +140,15 @@ const products = [
   .product-content {
     display: flex;
     align-items: center;
-    gap: var(--space-5);
+    gap: var(--space-4);
     position: relative;
     z-index: 1;
   }
 
   .product-logo {
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 0.875rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
     overflow: hidden;
     flex-shrink: 0;
     background: var(--bg-secondary);
@@ -166,7 +166,7 @@ const products = [
 
   .product-name {
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: var(--space-1);
@@ -188,8 +188,8 @@ const products = [
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     background: var(--bg-card-hover);
     border-radius: 50%;
     color: var(--text-tertiary);
@@ -211,13 +211,13 @@ const products = [
 
   @media (max-width: 640px) {
     .product-card {
-      padding: var(--space-5);
+      padding: var(--space-4);
     }
 
     .product-content {
       flex-direction: column;
       align-items: flex-start;
-      gap: var(--space-4);
+      gap: var(--space-3);
     }
 
     .product-desc {
@@ -226,8 +226,8 @@ const products = [
 
     .product-arrow {
       position: absolute;
-      top: var(--space-5);
-      right: var(--space-5);
+      top: var(--space-4);
+      right: var(--space-4);
     }
   }
 </style>

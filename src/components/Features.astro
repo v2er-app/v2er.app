@@ -91,14 +91,14 @@ const features = [
 
   .features-header {
     max-width: 600px;
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-8);
   }
 
   .features-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
-    margin-bottom: var(--space-12);
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
   }
 
   @media (max-width: 768px) {
@@ -110,10 +110,10 @@ const features = [
 
   .feature-card {
     position: relative;
-    padding: var(--space-8);
+    padding: var(--space-5);
     background: var(--bg-card);
     border: 1px solid var(--border-primary);
-    border-radius: 1.25rem;
+    border-radius: 1rem;
     transition: all 0.4s var(--ease-out-expo);
     overflow: hidden;
   }
@@ -144,10 +144,10 @@ const features = [
 
   .feature-number {
     position: absolute;
-    top: var(--space-6);
-    right: var(--space-6);
+    top: var(--space-4);
+    right: var(--space-4);
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     color: var(--text-muted);
     letter-spacing: 0.05em;
   }
@@ -156,11 +156,11 @@ const features = [
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
     background: var(--amber-bg);
-    border-radius: 0.875rem;
-    margin-bottom: var(--space-5);
+    border-radius: 0.625rem;
+    margin-bottom: var(--space-4);
     transition: all 0.3s var(--ease-out-quart);
   }
 
@@ -170,30 +170,30 @@ const features = [
   }
 
   .feature-icon i {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--amber);
   }
 
   .feature-title {
     font-family: var(--font-display);
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
     letter-spacing: -0.01em;
   }
 
   .feature-desc {
-    font-size: 0.9375rem;
-    line-height: 1.7;
+    font-size: 0.875rem;
+    line-height: 1.6;
     color: var(--text-secondary);
   }
 
   .feature-line {
     position: absolute;
     bottom: 0;
-    left: var(--space-8);
-    right: var(--space-8);
+    left: var(--space-5);
+    right: var(--space-5);
     height: 1px;
     background: linear-gradient(
       90deg,
@@ -219,13 +219,13 @@ const features = [
   .github-link {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-6);
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
     background: var(--bg-card);
     border: 1px solid var(--border-primary);
-    border-radius: 0.75rem;
+    border-radius: 0.5rem;
     color: var(--text-secondary);
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.3s var(--ease-out-quart);
   }
@@ -252,16 +252,20 @@ const features = [
 
   @media (max-width: 640px) {
     .feature-card {
-      padding: var(--space-6);
+      padding: var(--space-4);
     }
 
     .feature-number {
-      top: var(--space-4);
-      right: var(--space-4);
+      top: var(--space-3);
+      right: var(--space-3);
     }
 
     .feature-title {
-      font-size: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .feature-desc {
+      font-size: 0.8125rem;
     }
   }
 </style>
