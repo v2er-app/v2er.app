@@ -1,158 +1,343 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+
+const platforms = [
+  {
+    name: 'Android',
+    icon: 'fa-android',
+    url: 'https://github.com/v2er-app/Android/issues/new',
+    description: 'Android 版本的问题或建议',
+    accentClass: 'platform-android'
+  },
+  {
+    name: 'iOS',
+    icon: 'fa-apple',
+    url: 'https://github.com/v2er-app/iOS/issues/new',
+    description: 'iOS 版本的问题或建议',
+    accentClass: 'platform-ios'
+  }
+];
+
+const tips = [
+  '描述问题时请包含具体的操作步骤',
+  '提供您的设备型号和系统版本',
+  '如有可能，请附上截图或录屏',
+  '提交前请先搜索是否已有相同问题'
+];
 ---
 
 <Layout title="问题反馈 - V2er">
-  <!-- 简化的导航栏 -->
-  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-black/50">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between h-24">
-        <a href="/" class="flex items-center gap-4 hover:opacity-80 transition-opacity">
-          <img
-            src="/favicon-dark.svg"
-            alt="V2er Logo"
-            class="h-12 w-12"
-          >
-          <div class="flex flex-col">
-            <span class="font-extrabold text-2xl tracking-tight font-['Inter']" style="color: #F5F5F5">
-              V2er
-            </span>
-            <span class="text-sm text-gray-400 font-medium tracking-wide">
-              优雅的 V2EX 客户端
-            </span>
+  <Navbar />
+
+  <main class="help-main">
+    <div class="container">
+      <div class="help-layout">
+        <!-- Left: Header -->
+        <div class="help-header">
+          <div class="section-label">Feedback</div>
+          <h1 class="section-title">问题反馈</h1>
+          <p class="section-desc">
+            GitHub Issues 是我们唯一的问题反馈渠道。请根据平台选择对应入口提交问题。
+          </p>
+
+          <!-- Warning -->
+          <div class="help-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>请勿在 App Store 或 Google Play 评论区反馈问题，我们不会在商店中跟进。</span>
           </div>
-        </a>
+        </div>
 
-        <a
-          href="/"
-          class="px-4 py-2 text-sm font-medium text-gray-300
-                 transition-all duration-300 ease-out rounded-lg
-                 hover:text-white hover:bg-white/10"
-        >
-          <i class="fas fa-arrow-left mr-2"></i>
-          返回首页
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <main class="min-h-screen flex flex-col items-center justify-center pt-24 pb-16 px-4">
-    <!-- 背景渐变 -->
-    <div class="fixed inset-0 bg-gradient-to-b from-purple-500/10 via-transparent to-transparent pointer-events-none"></div>
-
-    <div class="relative z-10 w-full max-w-4xl mx-auto">
-      <!-- 标题区域 -->
-      <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
-          <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400">
-            问题反馈
-          </span>
-        </h1>
-        <p class="text-lg text-gray-400 max-w-xl mx-auto leading-relaxed">
-          GitHub Issues 是我们唯一的问题反馈渠道。<br class="hidden sm:inline">
-          请根据您使用的平台选择对应的入口提交问题。
-        </p>
-      </div>
-
-      <!-- 平台卡片 -->
-      <div class="grid md:grid-cols-2 gap-6 mb-12">
-        <!-- Android 卡片 -->
-        <a
-          href="https://github.com/v2er-app/Android/issues/new"
-          target="_blank"
-          rel="noopener"
-          class="group p-8 rounded-2xl bg-white/[0.03] border border-zinc-800
-                 transition-all duration-300 hover:bg-white/[0.06]
-                 hover:border-zinc-600 hover:-translate-y-1"
-        >
-          <div class="flex flex-col items-center text-center">
-            <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-green-500/20 to-green-600/20
-                        flex items-center justify-center mb-6
-                        group-hover:from-green-500/30 group-hover:to-green-600/30 transition-all">
-              <i class="fab fa-android text-4xl text-green-400"></i>
-            </div>
-            <h2 class="text-2xl font-bold text-white mb-3">Android</h2>
-            <p class="text-gray-400 mb-6">
-              提交 Android 版本相关的问题或建议
-            </p>
-            <span class="inline-flex items-center gap-2 px-6 py-3 rounded-xl
-                         bg-green-500/10 text-green-400 font-medium
-                         group-hover:bg-green-500/20 transition-all">
-              <i class="fab fa-github"></i>
-              提交 Issue
-              <i class="fas fa-arrow-right text-sm opacity-0 -translate-x-2
-                        group-hover:opacity-100 group-hover:translate-x-0 transition-all"></i>
-            </span>
+        <!-- Right: Content -->
+        <div class="help-content">
+          <!-- Platform Cards -->
+          <div class="platform-cards">
+            {platforms.map(platform => (
+              <a
+                href={platform.url}
+                target="_blank"
+                rel="noopener"
+                class={`platform-card ${platform.accentClass}`}
+              >
+                <div class="platform-icon">
+                  <i class={`fab ${platform.icon}`}></i>
+                </div>
+                <div class="platform-info">
+                  <h2 class="platform-name">{platform.name}</h2>
+                  <p class="platform-desc">{platform.description}</p>
+                </div>
+                <div class="platform-action">
+                  <i class="fab fa-github"></i>
+                  <span>提交 Issue</span>
+                  <i class="fas fa-arrow-right platform-arrow"></i>
+                </div>
+              </a>
+            ))}
           </div>
-        </a>
 
-        <!-- iOS 卡片 -->
-        <a
-          href="https://github.com/v2er-app/iOS/issues/new"
-          target="_blank"
-          rel="noopener"
-          class="group p-8 rounded-2xl bg-white/[0.03] border border-zinc-800
-                 transition-all duration-300 hover:bg-white/[0.06]
-                 hover:border-zinc-600 hover:-translate-y-1"
-        >
-          <div class="flex flex-col items-center text-center">
-            <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-600/20
-                        flex items-center justify-center mb-6
-                        group-hover:from-blue-500/30 group-hover:to-purple-600/30 transition-all">
-              <i class="fab fa-apple text-4xl text-white"></i>
-            </div>
-            <h2 class="text-2xl font-bold text-white mb-3">iOS</h2>
-            <p class="text-gray-400 mb-6">
-              提交 iOS 版本相关的问题或建议
-            </p>
-            <span class="inline-flex items-center gap-2 px-6 py-3 rounded-xl
-                         bg-blue-500/10 text-blue-400 font-medium
-                         group-hover:bg-blue-500/20 transition-all">
-              <i class="fab fa-github"></i>
-              提交 Issue
-              <i class="fas fa-arrow-right text-sm opacity-0 -translate-x-2
-                        group-hover:opacity-100 group-hover:translate-x-0 transition-all"></i>
-            </span>
+          <!-- Tips Section -->
+          <div class="tips-section">
+            <h3 class="tips-title">
+              <i class="fas fa-lightbulb"></i>
+              <span>提交高质量 Issue 的建议</span>
+            </h3>
+            <ul class="tips-list">
+              {tips.map((tip, index) => (
+                <li class="tip-item">
+                  <span class="tip-index">{String(index + 1).padStart(2, '0')}</span>
+                  <span class="tip-text">{tip}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </a>
-      </div>
-
-      <!-- 警告提示 -->
-      <div class="p-5 rounded-xl bg-orange-500/10 border border-orange-500/30 mb-6">
-        <p class="text-sm text-orange-300 flex items-center gap-3">
-          <i class="fas fa-exclamation-triangle text-orange-400"></i>
-          <span>请勿在 App Store 或 Google Play 评论区反馈问题，我们不会在商店中跟进问题。</span>
-        </p>
-      </div>
-
-      <!-- 提示信息 -->
-      <div class="p-6 rounded-xl bg-white/[0.02] border border-zinc-800/50">
-        <h3 class="text-sm font-semibold text-gray-300 mb-3 flex items-center gap-2">
-          <i class="fas fa-lightbulb text-yellow-500"></i>
-          提交高质量 Issue 的建议
-        </h3>
-        <ul class="text-sm text-gray-500 space-y-2">
-          <li class="flex items-start gap-2">
-            <i class="fas fa-check text-green-500/70 mt-1 text-xs"></i>
-            <span>描述问题时请包含具体的操作步骤</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <i class="fas fa-check text-green-500/70 mt-1 text-xs"></i>
-            <span>提供您的设备型号和系统版本</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <i class="fas fa-check text-green-500/70 mt-1 text-xs"></i>
-            <span>如有可能，请附上截图或录屏</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <i class="fas fa-check text-green-500/70 mt-1 text-xs"></i>
-            <span>提交前请先搜索是否已有相同问题</span>
-          </li>
-        </ul>
+        </div>
       </div>
     </div>
   </main>
 
   <Footer />
 </Layout>
+
+<style>
+  .help-main {
+    padding-top: 8rem;
+    padding-bottom: var(--space-10);
+    min-height: 100vh;
+  }
+
+  .help-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-10);
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .help-layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+    }
+  }
+
+  /* ── Header (Left) ── */
+
+  .help-header {
+    position: sticky;
+    top: 8rem;
+  }
+
+  @media (max-width: 900px) {
+    .help-header {
+      position: static;
+    }
+  }
+
+  .help-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+    padding: var(--space-4) var(--space-5);
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 0.75rem;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--amber);
+  }
+
+  .help-warning i {
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+  }
+
+  /* ── Content (Right) ── */
+
+  .help-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  /* ── Platform Cards ── */
+
+  .platform-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .platform-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    padding: var(--space-5) var(--space-6);
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 1rem;
+    transition: all 0.4s var(--ease-out-expo);
+    cursor: pointer;
+  }
+
+  .platform-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-secondary);
+    transform: translateY(-2px);
+  }
+
+  .platform-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    flex-shrink: 0;
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .platform-icon i {
+    font-size: 1.5rem;
+  }
+
+  /* Android accent */
+  .platform-android .platform-icon {
+    background: rgba(61, 220, 132, 0.1);
+    color: #3DDC84;
+  }
+
+  .platform-android:hover .platform-icon {
+    background: rgba(61, 220, 132, 0.18);
+  }
+
+  /* iOS accent */
+  .platform-ios .platform-icon {
+    background: var(--bg-card-hover);
+    color: var(--text-primary);
+  }
+
+  .platform-ios:hover .platform-icon {
+    background: var(--amber-bg);
+    color: var(--amber);
+  }
+
+  .platform-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .platform-name {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-1);
+  }
+
+  .platform-desc {
+    font-size: 0.8125rem;
+    color: var(--text-tertiary);
+  }
+
+  .platform-action {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    transition: all 0.3s var(--ease-out-quart);
+    flex-shrink: 0;
+  }
+
+  .platform-card:hover .platform-action {
+    border-color: var(--border-secondary);
+    color: var(--text-primary);
+  }
+
+  .platform-arrow {
+    font-size: 0.6875rem;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.3s var(--ease-out-quart);
+  }
+
+  .platform-card:hover .platform-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (max-width: 640px) {
+    .platform-card {
+      flex-wrap: wrap;
+      padding: var(--space-4) var(--space-5);
+    }
+
+    .platform-action {
+      width: 100%;
+      justify-content: center;
+      margin-top: var(--space-2);
+    }
+  }
+
+  /* ── Tips Section ── */
+
+  .tips-section {
+    border-top: 1px solid var(--border-primary);
+    padding-top: var(--space-6);
+  }
+
+  .tips-title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-5);
+  }
+
+  .tips-title i {
+    color: var(--amber);
+    font-size: 0.875rem;
+  }
+
+  .tips-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  .tip-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--border-primary);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .tip-item:last-child {
+    border-bottom: none;
+  }
+
+  .tip-index {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    min-width: 1.5rem;
+  }
+
+  .tip-text {
+    flex: 1;
+    line-height: 1.6;
+  }
+</style>
