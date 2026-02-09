@@ -1,12 +1,12 @@
 {
-  "version": 2,
-  "lastUpdated": "2025-01-16T12:00:00Z",
+  "version": 3,
+  "lastUpdated": "2026-02-09T12:00:00Z",
   "items": [
     {
       "id": "shuangpin",
       "name": "试试双拼",
-      "description": "投入一周时间，收获终身效率。这项简单实用的技能，值得你现在就开始学习。",
-      "url": "https://ulpb.app",
+      "description": "全平台双拼学习工具，支持 iOS、Android、macOS、Windows、Linux",
+      "url": "https://ulpb.app/download",
       "icon": "/image/shuangpin-logo.webp"
     },
     {
@@ -26,6 +26,11 @@
     }
   ],
   "changelog": [
+    {
+      "version": 3,
+      "date": "2026-02-09",
+      "changes": "试试双拼已支持全平台，更新下载链接"
+    },
     {
       "version": 2,
       "date": "2025-01-16",
